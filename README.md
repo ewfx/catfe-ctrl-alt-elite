@@ -85,5 +85,7 @@ The team encountered several technical and non-technical challenges during devel
 - 🔹 Other: Gemini API, Python
 
 ## 👥 Team
-- **** - [GitHub](#) | [LinkedIn](#)
-- **** - [GitHub](#) | [LinkedIn](#)
+- **Jyothikamalesh S** 
+- **Kaarthik Shankar** 
+- **Kumar Saurav** 
+- **Ayush Singh**
