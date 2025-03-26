@@ -90,7 +90,7 @@ The team encountered several technical and non-technical challenges during devel
 ## 🏃 How to Run
 1. Clone the repository  
    ```sh
-   git clone https://github.com/your-repo.git](https://github.com/ewfx/catfe-ctrl-alt-elite.git
+   git clone https://github.com/ewfx/catfe-ctrl-alt-elite.git
    ```
 2. CLI installation- navigate to code/src/Finsure\ CLI
    ```sh
