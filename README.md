@@ -8,6 +8,7 @@
 - [How We Built It](#how-we-built-it)
 - [Challenges We Faced](#challenges-we-faced)
 - [How to Run](#how-to-run)
+
 - [Tech Stack](#tech-stack)
 - [Team](#team)
 
@@ -29,9 +30,13 @@ Finsure is a regulation and context-aware testing solution made with agentic AI.
 
 The inspiration behind FINSURE stems from the increasing complexity of regulatory compliance and the challenges faced by financial institutions in ensuring their systems are robust, secure, and compliant. The project addresses the critical need for a solution that can automatically test financial systems for compliance with ever-evolving regulations, ensuring data security, fairness, and reliability. By leveraging agentic AI, FINSURE aims to simplify compliance processes while enhancing the robustness of financial systems.
 
+![Regulation_Context_RAG_pipelines](https://github.com/user-attachments/assets/bfafd91c-4c6b-4407-9757-c21367168a6b)
+
+
 ## ⚙️ What It Does
 
 FINSURE offers a comprehensive suite of features designed to streamline testing and compliance:
+<img width="509" alt="Screenshot 2025-03-27 at 4 44 49 AM" src="https://github.com/user-attachments/assets/0f417c2b-9f90-4204-a5a0-024f46fb7b51" />
 
 - **Regulations Knowledge Database and RAG Pipeline**: A repository for regulatory updates integrated with retrieval-augmented generation (RAG) for real-time compliance insights.
 - **Context-Aware Test Generator and Executor Pipeline**: Automatically generates and executes tests tailored to specific regulatory contexts.
@@ -50,12 +55,19 @@ FINSURE offers a comprehensive suite of features designed to streamline testing 
 The development of FINSURE involved a diverse tech stack tailored to its various components:
 
 - **Regulations Knowledge Database and RAG Pipeline**: Built using Elasticsearch for efficient data retrieval.
-- **Context-Aware Test Generator and Executor Pipeline**:
+- **Context-Aware Test function Generator and Executor Pipeline**:
     - *Codebase Defender*: Focused on SOX, KYC, AML tests using Java and Gradle.
-    - *Prompt Defender*: A UI test agent leveraging finance-aware prompts with Browseruse and Playwright.
-- **PaymentAPI Defender**: Ensures compliance with Swift messaging standards using PayPal Sandbox API and Python.
-- **CreditEngine Defender**: Tests ML models for credit risk using Python.
+- **Context-Aware Test API request Generator and Executor Pipelines**:
+    - *PaymentAPI Defender*: Ensures compliance with Swift messaging standards using Trasanction gateway endpoints and Python,Now implemented with PayPal transaction API.
+    - *CreditEngine Defender*: Tests ML models for credit risk using Python.
 - **UI Automation Tester**: Employs Browseruse and Playwright for natural language-based UI testing.
+- **Prompt Defender**: A UI test agent for testing chatbots with Prompt injection leveraging finance-aware prompts with Browseruse and Playwright.
+
+# Command line interface(IDE and OS Agnostic)
+  ![Command line interface](https://github.com/user-attachments/assets/cdb723ad-6c40-4af3-a57a-f93de1052174)
+# VS Code Plugin (OS Agnostic) 
+  ![VS Code plugin](https://github.com/user-attachments/assets/8e54c5dd-790a-4e84-97c8-f55940827b93)
+
 
 
 ## 🚧 Challenges We Faced
@@ -72,25 +84,27 @@ The team encountered several technical and non-technical challenges during devel
    ```sh
    git clone https://github.com/your-repo.git
    ```
-2. Install dependencies  
+2. CLI installation- navigate to code/src/Finsure\ CLI
    ```sh
-   npm install  # or pip install -r requirements.txt (for Python)
+   pip install . (for Python) # pip install finsure.whl(in build folder)
    ```
-3. Run the project  
+3.  VS code plugin installation - navigate to code/src/Finsure\ VS\ code\ plugin 
    ```sh
-   npm start  # or python app.py
+   code --install-extension finsure-0.0.1.vsix 
    ```
 
 ## 🏗️ Tech Stack
+- 🔹 VS code plugin: Typescript,Javascript
+- 🔹 Command Line interface: Python, Typer
+- 🔹 RAG Database: Elasticsearch
 - 🔹 Frontend: HTML/Streamlit
-- 🔹 Backend: FastAPI
-- 🔹 Database: Elasticsearch
-- 🔹 Other: Gemini API, Python
+- 🔹 Backend: FastAPI,PayPal API
 - 🔹 Containerization: Docker
+- 🔹 Testing instruments: Paypal Transaction Sandbox API,Credit Score Assesment ML(XG boost),Swift Transaction(Java Class)
   
 ## 👥 Team
-- **Jyothikamalesh S**
 - **Atiraj Kumar** 
+- **Jyothikamalesh S**
 - **Kaarthik Shankar** 
 - **Kumar Saurav** 
 - **Ayush Singh**
