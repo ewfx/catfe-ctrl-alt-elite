@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FIToFICustomerCreditTransferV08 xmlns="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08">
+    <GrpHdr>
+        <MsgId>ABC1234567890</MsgId>
+        <CreDtTm>2025-03-23T14:25:43</CreDtTm>
+        <NbOfTxs>1</NbOfTxs>
+        <SttlmInf>
+            <SttlmMtd>CLRG</SttlmMtd>
+            <ClrSys>
+                <Cd>CHIPS</Cd>
+            </ClrSys>
+        </SttlmInf>
+    </GrpHdr>
+    <CdtTrfTxInf>
+        <PmtId>
+            <InstrId>PAY001</InstrId>
+            <EndToEndId>INV2025001</EndToEndId>
+        </PmtId>
+        <IntrBkSttlmAmt Ccy="USD">15000.00</IntrBkSttlmAmt>
+        <ChrgBr>SLEV</ChrgBr>
+        <Dbtr>
+            <Nm>John Doe</Nm>
+            <PstlAdr>
+                <Ctry>US</Ctry>
+                <AdrLine>123 Main St, New York, NY</AdrLine>
+            </PstlAdr>
+        </Dbtr>
+        <DbtrAcct>
+            <Id>
+                <IBAN>US12345678901234567890</IBAN>
+            </Id>
+        </DbtrAcct>
+        <Cdtr>
+            <Nm>ABC Corp</Nm>
+            <PstlAdr>
+                <Ctry>GB</Ctry>
+                <AdrLine>456 London Bridge, UK</AdrLine>
+            </PstlAdr>
+        </Cdtr>
+        <CdtrAcct>
+            <Id>
+                <IBAN>GB09876543210987654321</IBAN>
+            </Id>
+        </CdtrAcct>
+    </CdtTrfTxInf>
+</FIToFICustomerCreditTransferV08>

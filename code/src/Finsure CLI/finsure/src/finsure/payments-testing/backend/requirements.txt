@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+httpx
+requests
+python-dotenv
+openai
+google-generativeai
+python-dotenv
+paypalrestsdk

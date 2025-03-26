@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    working_dir: /app/src
+    command: ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/src:/app/src
+      - ./backend/.env:/app/.env
+    depends_on:
+      - mock_api
+    environment:
+      - PYTHONPATH=/app/src
+    networks:
+      - app_network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    working_dir: /app/src
+    command: ["streamlit", "run", "/app/src/app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./frontend/src:/app/src
+      - ./backend/src:/app/backend/src
+    depends_on:
+      - backend
+    networks:
+      - app_network
+
+  mock_api:
+    build:
+      context: ./backend
+    working_dir: /app/src
+    command: ["uvicorn", "mock_api:app", "--host", "0.0.0.0", "--port", "8001"]
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./backend/src:/app/src
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge

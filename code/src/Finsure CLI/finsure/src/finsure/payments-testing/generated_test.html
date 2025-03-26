@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Code</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        });
+    </script>
+    <style>
+        h1 {
+            font-size: 25.6px;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>org.example.BankAccountTest</h1>
+    <pre><code class="language-java">
+package org.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class BankAccountTest {
+
+    @Test
+    void testTransferWithoutKycFails() {
+        BankAccount account = new BankAccount();
+        account.setKycStatus(false);
+        account.deposit(1000);
+
+        System.out.println("testTransferWithoutKycFails: This test would fail if a transfer is allowed without valid KYC.");
+        System.out.println("testTransferWithoutKycFails: Remediate by adding a check for KYC status before allowing transfers.");
+
+        account.transfer(500, "recipient");
+        assertEquals(1000, account.getBalance(), "Transfer should not have been allowed without KYC.");
+    }
+
+    @Test
+    void testSuspiciousTransactionPatternDetection() {
+        BankAccount account = new BankAccount();
+        account.setKycStatus(true);
+        account.deposit(1000);
+
+        System.out.println("testSuspiciousTransactionPatternDetection: This test would fail if a sequence of small transactions followed by a large one is not flagged.");
+        System.out.println("testSuspiciousTransactionPatternDetection: Remediate by implementing a pattern detection mechanism to identify suspicious transaction sequences.");
+
+        account.transfer(10, "recipient1");
+        account.transfer(15, "recipient2");
+        account.transfer(20, "recipient3");
+        account.transfer(500, "recipient4");
+
+        // Assuming there's no built-in detection, the balance will be reduced.
+        // This assertion checks if the balance is as expected after the transfers,
+        // which would indicate that the suspicious pattern was not detected and prevented.
+        assertEquals(455, account.getBalance(), "Suspicious transaction pattern should have been detected and prevented.");
+    }
+
+    @Test
+    void testBlockedAccountCannotTransfer() {
+        BankAccount account = new BankAccount();
+        account.setKycStatus(true);
+        account.setBlocked(true);
+        account.deposit(1000);
+
+        System.out.println("testBlockedAccountCannotTransfer: This test would fail if a transfer is allowed from a blocked account.");
+        System.out.println("testBlockedAccountCannotTransfer: Remediate by adding a check for account blocked status before allowing transfers.");
+
+        account.transfer(500, "recipient");
+        assertEquals(1000, account.getBalance(), "Transfer should not have been allowed from a blocked account.");
+    }
+}
+    </code></pre>
+</body>
+</html>

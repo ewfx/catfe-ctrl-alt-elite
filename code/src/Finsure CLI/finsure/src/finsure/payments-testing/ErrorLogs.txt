@@ -1,0 +1,824 @@
+(venv) ayush@Ayush:~/payments-testing$ docker compose up --build
+[+] Running 3/3
+ ✔ Container firebase-auth    Running                                                                                       0.0s
+ ✔ Container marble-postgres  Running                                                                                       0.0s
+ ✔ Container marble-es        Running                                                                                       0.0s
+Attaching to firebase-auth, marble-api, marble-api-cron, marble-app, marble-es, marble-postgres, marble-yente
+marble-api       | 2025/03/22 20:20:37 PG_CONNECTION_STRING environment variable is not set, using default value ''
+marble-api       | 2025/03/22 20:20:37 PG_SSL_MODE environment variable is not set, using default value 'prefer'
+marble-api-cron  | 2025-03-22T20:20:37Z INFO Flags shouldRunMigrations=false shouldRunServer=false shouldRunScheduledScenarios=false shouldRunDataIngestion=false shouldRunScheduler=false shouldRunSendPendingWebhookEvents=false shouldRunWorker=true
+marble-api       | 2025/03/22 20:20:37 LOGGING_FORMAT environment variable is not set, using default value 'text'
+marble-api-cron  | 2025/03/22 20:20:37 ENABLE_GCP_TRACING environment variable is not set, using default value 'false'
+marble-api       | 2025-03-22T20:20:37Z INFO Flags shouldRunMigrations=true shouldRunServer=true shouldRunScheduledScenarios=false shouldRunDataIngestion=false shouldRunScheduler=false shouldRunSendPendingWebhookEvents=false shouldRunWorker=false
+marble-api-cron  | 2025/03/22 20:20:37 PG_CONNECTION_STRING environment variable is not set, using default value ''
+marble-api       | 2025-03-22T20:20:37Z INFO starting migrator version=v0.38.6
+marble-api-cron  | 2025/03/22 20:20:37 PG_MAX_POOL_SIZE environment variable is not set, using default value '40'
+marble-api-cron  | 2025/03/22 20:20:37 CLIENT_DB_CONFIG_FILE environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:37 PG_SSL_MODE environment variable is not set, using default value 'prefer'
+marble-api-cron  | 2025/03/22 20:20:37 CONVOY_API_KEY environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:37 CONVOY_API_URL environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:37 CONVOY_PROJECT_ID environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:37 CONVOY_RATE_LIMIT environment variable is not set, using default value '50'
+marble-api-cron  | 2025/03/22 20:20:37 OPENSANCTIONS_API_HOST environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:37 OPENSANCTIONS_AUTH_METHOD environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:37 OPENSANCTIONS_API_KEY environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:37 NAME_RECOGNITION_API_URL environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:37 KILL_IF_READ_LICENSE_ERROR environment variable is not set, using default value 'false'
+marble-api-cron  | 2025/03/22 20:20:37 FAILED_WEBHOOKS_RETRY_PAGE_SIZE environment variable is not set, using default value '1000'
+marble-api-cron  | 2025/03/22 20:20:37 LOGGING_FORMAT environment variable is not set, using default value 'text'
+marble-api-cron  | 2025/03/22 20:20:37 SENTRY_DSN environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:37 CLOUD_RUN_PROBE_PORT environment variable is not set, using default value ''
+marble-api       | 2025-03-22T20:20:38Z INFO Migrations starting to setup marble DB
+marble-postgres  | 2025-03-22 20:20:38.247 UTC [825] ERROR:  relation "goose_db_version" does not exist at character 36
+marble-postgres  | 2025-03-22 20:20:38.247 UTC [825] STATEMENT:  SELECT version_id, is_applied from goose_db_version ORDER BY id DESC
+marble-api       | 2025/03/22 20:20:38 OK   20230515205456_init_schema.sql (108.99ms)
+marble-api       | 2025/03/22 20:20:38 OK   20230515205457_init_marble.sql (406.28ms)
+marble-api       | 2025/03/22 20:20:38 OK   20230515205458_init_marble_ingestion_db.sql (30.23ms)
+marble-api       | 2025/03/22 20:20:38 OK   20230522211012_decisions_index.sql (7.4ms)
+marble-api       | 2025/03/22 20:20:38 OK   20230524173849_transaction_currency_nullable.sql (2.82ms)
+marble-api       | 2025/03/22 20:20:38 OK   20230530164800_add_users.sql (16.73ms)
+marble-api       | 2025/03/22 20:20:38 OK   20230606090000_add_role_to_api_key.sql (6.97ms)
+marble-api       | 2025/03/22 20:20:38 OK   20230606154759_create_client_tables.sql (10.48ms)
+marble-api       | 2025/03/22 20:20:38 OK   20230607180012_remove_ingestion_tables.sql (11.91ms)
+marble-api       | 2025/03/22 20:20:39 OK   20230615091308_rename_clienttables_organization_schema.sql (134.29ms)
+marble-api       | 2025/03/22 20:20:39 OK   20230615103735_add_export_shedulded_execution_s3.sql (2.76ms)
+marble-api       | 2025/03/22 20:20:39 OK   20230616120000_batch_executions.sql (9.89ms)
+marble-api       | 2025/03/22 20:20:39 OK   20230616133343_decision_scheduled.sql (6.95ms)
+marble-api       | 2025/03/22 20:20:39 OK   20230622150504_batch_trigger_sql.sql (1.91ms)
+marble-api       | 2025/03/22 20:20:39 OK   20230622155555_add_lists.sql (23.14ms)
+marble-api       | 2025/03/22 20:20:39 OK   20230712141856_add_custom_list_composite_key.sql (7.44ms)
+marble-api       | 2025/03/22 20:20:39 OK   20230717175911_add_ast_expression_to_rule.sql (1.52ms)
+marble-api       | 2025/03/22 20:20:39 OK   20230726153023_add_trigger_condition_ast_expression.sql (1.9ms)
+marble-api       | 2025/03/22 20:20:39 OK   20230728164957_remove_formula_and_trigger_condition.sql (1.95ms)
+marble-api       | 2025/03/22 20:20:39 OK   20230921150013_add_index_on_decision_rules.sql (5.65ms)
+marble-api       | 2025/03/22 20:20:39 OK   20230921173346_add_data_model.sql (26.56ms)
+marble-api       | 2025/03/22 20:20:39 OK   20230926112219_add_number_of_created_decisions.sql (1.85ms)
+marble-api       | 2025/03/22 20:20:39 OK   20230927110030_add_upload_logs.sql (11.61ms)
+marble-api       | 2025/03/22 20:20:39 OK   20230928104726_add_constraint_on_data_model.sql (12.34ms)
+marble-api       | 2025/03/22 20:20:39 OK   20230929112024_add_table_name_and_index_to_upload_logs.sql (5.75ms)
+marble-api       | 2025/03/22 20:20:39 OK   20231010091555_add_manual_to_scheduled_executions.sql (26.91ms)
+marble-api       | 2025/03/22 20:20:39 OK   20231011110218_add_data_model_enums.sql (14.98ms)
+marble-api       | 2025/03/22 20:20:39 OK   20231102181134_add_indexes_to_decisions.sql (16.36ms)
+marble-api       | 2025/03/22 20:20:39 OK   20231103160436_add_decision_indexes.sql (11.76ms)
+marble-api       | 2025/03/22 20:20:39 OK   20231113160835_create_case_table.sql (18.52ms)
+marble-api       | 2025/03/22 20:20:39 OK   20231113160850_add_case_id_to_decisions.sql (8.67ms)
+marble-api       | 2025/03/22 20:20:39 OK   20231115143600_add_data_model_float_enums.sql (7.78ms)
+marble-api       | 2025/03/22 20:20:39 OK   20231116141112_add_filtered_unique_index_on_list_names.sql (7.58ms)
+marble-postgres  | 2025-03-22 20:20:39.364 UTC [827] ERROR:  column "transfer_check_scenario_id" does not exist at character 30
+marble-postgres  | 2025-03-22 20:20:39.364 UTC [827] STATEMENT:  SELECT id, deleted_at, name, transfer_check_scenario_id, use_marble_db_schema_as_default, default_scenario_timezone, sanctions_threshold, sanctions_limit FROM organizations ORDER BY id
+marble-api-cron  | 2025-03-22T20:20:39Z ERROR error executing sql query: SELECT id, deleted_at, name, transfer_check_scenario_id, use_marble_db_schema_as_default, default_scenario_timezone, sanctions_threshold, sanctions_limit FROM organizations ORDER BY id: ERROR: column "transfer_check_scenario_id" does not exist (SQLSTATE 42703)
+marble-api-cron  | (1) attached stack trace
+marble-api-cron  |   -- stack trace:
+marble-api-cron  |   | github.com/checkmarble/marble-backend/repositories.ForEachRow
+marble-api-cron  |   |  /go/src/app/repositories/sql_to_row.go:100
+marble-api-cron  |   | github.com/checkmarble/marble-backend/repositories.SqlToListOfRow[...]
+marble-api-cron  |   |  /go/src/app/repositories/sql_to_row.go:44
+marble-api-cron  |   | github.com/checkmarble/marble-backend/repositories.SqlToListOfModels[...]
+marble-api-cron  |   |  /go/src/app/repositories/sql_to_model.go:28
+marble-api-cron  |   | github.com/checkmarble/marble-backend/repositories.(*OrganizationRepositoryPostgresql).AllOrganizations
+marble-api-cron  |   |  /go/src/app/repositories/organization_repository.go:37
+marble-api-cron  |   | github.com/checkmarble/marble-backend/usecases.QueuesFromOrgs
+marble-api-cron  |   |  /go/src/app/usecases/task_queue.go:114
+marble-api-cron  |   | github.com/checkmarble/marble-backend/cmd.RunTaskQueue
+marble-api       | 2025/03/22 20:20:39 OK   20231117100514_create_case_events_table.sql (16.37ms)
+marble-api-cron  |   |  /go/src/app/cmd/worker.go:137
+marble-api-cron  |   | main.main
+marble-api-cron  |   |  /go/src/app/main.go:87
+marble-api-cron  |   | runtime.main
+marble-api       | 2025/03/22 20:20:39 OK   20231117100515_add_name_to_users.sql (2.31ms)
+marble-api       | 2025/03/22 20:20:39 OK   20231117100516_remove_case_description.sql (2.7ms)
+marble-api-cron  |   |  /usr/local/go/src/runtime/proc.go:272
+marble-api-cron  |   | runtime.goexit
+marble-api-cron  |   |  /usr/local/go/src/runtime/asm_amd64.s:1700
+marble-api-cron  | Wraps: (2) error executing sql query: SELECT id, deleted_at, name, transfer_check_scenario_id, use_marble_db_schema_as_default, default_scenario_timezone, sanctions_threshold, sanctions_limit FROM organizations ORDER BY id
+marble-api-cron  | Wraps: (3) ERROR: column "transfer_check_scenario_id" does not exist (SQLSTATE 42703)
+marble-api-cron  | Error types: (1) *withstack.withStack (2) *errutil.withPrefix (3) *pgconn.PgError
+marble-api-cron  | 2025-03-22T20:20:39Z ERROR error executing sql query: SELECT id, deleted_at, name, transfer_check_scenario_id, use_marble_db_schema_as_default, default_scenario_timezone, sanctions_threshold, sanctions_limit FROM organizations ORDER BY id: ERROR: column "transfer_check_scenario_id" does not exist (SQLSTATE 42703)
+marble-api-cron  | (1) attached stack trace
+marble-api-cron  |   -- stack trace:
+marble-api-cron  |   | github.com/checkmarble/marble-backend/repositories.ForEachRow
+marble-api-cron  |   |  /go/src/app/repositories/sql_to_row.go:100
+marble-api-cron  |   | github.com/checkmarble/marble-backend/repositories.SqlToListOfRow[...]
+marble-api-cron  |   |  /go/src/app/repositories/sql_to_row.go:44
+marble-api       | 2025/03/22 20:20:39 OK   20231120110742_create_case_contributors.sql (16.35ms)
+marble-api-cron  |   | github.com/checkmarble/marble-backend/repositories.SqlToListOfModels[...]
+marble-api-cron  |   |  /go/src/app/repositories/sql_to_model.go:28
+marble-api-cron  |   | github.com/checkmarble/marble-backend/repositories.(*OrganizationRepositoryPostgresql).AllOrganizations
+marble-api-cron  |   |  /go/src/app/repositories/organization_repository.go:37
+marble-api-cron  |   | github.com/checkmarble/marble-backend/usecases.QueuesFromOrgs
+marble-api-cron  |   |  /go/src/app/usecases/task_queue.go:114
+marble-api-cron  |   | github.com/checkmarble/marble-backend/cmd.RunTaskQueue
+marble-api-cron  |   |  /go/src/app/cmd/worker.go:137
+marble-api-cron  |   | main.main
+marble-api-cron  |   |  /go/src/app/main.go:87
+marble-api-cron  |   | runtime.main
+marble-api-cron  |   |  /usr/local/go/src/runtime/proc.go:272
+marble-api-cron  |   | runtime.goexit
+marble-api-cron  |   |  /usr/local/go/src/runtime/asm_amd64.s:1700
+marble-api       | 2025/03/22 20:20:39 OK   20231122111904_change_user_id_foreign_key.sql (10.44ms)
+marble-api-cron  | Wraps: (2) error executing sql query: SELECT id, deleted_at, name, transfer_check_scenario_id, use_marble_db_schema_as_default, default_scenario_timezone, sanctions_threshold, sanctions_limit FROM organizations ORDER BY id
+marble-api-cron  | Wraps: (3) ERROR: column "transfer_check_scenario_id" does not exist (SQLSTATE 42703)
+marble-api-cron  | Error types: (1) *withstack.withStack (2) *errutil.withPrefix (3) *pgconn.PgError
+marble-api-cron  | 2025/03/22 20:20:39 error executing sql query: SELECT id, deleted_at, name, transfer_check_scenario_id, use_marble_db_schema_as_default, default_scenario_timezone, sanctions_threshold, sanctions_limit FROM organizations ORDER BY id: ERROR: column "transfer_check_scenario_id" does not exist (SQLSTATE 42703)
+marble-api       | 2025/03/22 20:20:39 OK   20231123141501_add_inbox_tables.sql (24.38ms)
+marble-api       | 2025/03/22 20:20:39 OK   20231127120900_add_inbox_id_on_cases.sql (4.96ms)
+marble-api       | 2025/03/22 20:20:39 OK   20231129180209_create_tags_table.sql (18.79ms)
+marble-api       | 2025/03/22 20:20:39 OK   20231201101404_remove_inbox_from_tags.sql (5.4ms)
+marble-api       | 2025/03/22 20:20:39 OK   20231215152328_add_deleted_at_to_users.sql (2.75ms)
+marble-api       | 2025/03/22 20:20:39 OK   20231218220000_create_case_files_table.sql (12.18ms)
+marble-api       | 2025/03/22 20:20:39 OK   20231222101032_change_user_email_index.sql (5.38ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240112114607_fix_user_email_index.sql (6.72ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240124111516_create_analytics_schema.sql (14.95ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240201142144_remove_firebase_uid.sql (2.47ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240201155650_api_key_description.sql (22.84ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240202145805_remove_default_apikey_role.sql (46.85ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240223090700_data_model_link_delete_cascade.sql (6.39ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240223094300_drop_data_models.sql (7.64ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240223095300_drop_organization_database_name.sql (3.09ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240301225900_case_event_userid_nullable.sql (2.27ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240304105230_scenario_decision_to_case_settings.sql (3.91ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240304155400_hash_apikeys.sql (7.63ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240312104400_organization_unique_name.sql (4.57ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240312153600_iterationId_on_decisions_and_ruleId_on_decisionRules.sql (3.22ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240313141600_apikeys_keyHash_index.sql (6.15ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240314104400_iterationId_on_decisions_and_ruleId_on_decisionRules_backfill.sql (10.03ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240322141900_transfer_check_feature.sql (30.71ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240325133100_store_api_key_prefix.sql (10.55ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240325142444_evaluation_on_decisionrules.sql (2.1ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240325143700_introduce_partners.sql (7.79ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240327153500_ingested_tables_primary_keys.sql (20.52ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240402153800_audit_trail_trigger.sql (9.18ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240403105200_audit_table_schema_change.sql (4.15ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240419115400_data_model_pivot.sql (12.48ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240423160700_pivot_value_on_decisions.sql (3.24ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240425140600_decisions_pivot_index.sql (6.29ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240425161100_rationalize_decisions_indexes.sql (8.74ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240502162700_partner_id_on_users.sql (4.91ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240507140800_scenario_workflow_type.sql (3.93ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240521171800_add_to_case_workflow_indexes.sql (15.8ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240607115200_add_indexes_for_iteration_deletion.sql (8.6ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240607153000_field_rule_group_on_rules.sql (4.05ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240620154045_introduce_licenses.sql (21.62ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240627115100_partner_bic.sql (13.17ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240628170500_introduce_transfer_alerts.sql (21.15ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240708141735_create_webhook_events_table.sql (14ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240717170435_webhooks_events_rename_retry_count.sql (2.44ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240725140200_licences_webhooks_entitlement.sql (2.49ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240731141800_introduce_rule_snoozes.sql (16.62ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240806171200_rule_execution_outcome.sql (2.41ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240806173300_licences_rule_snoozes.sql (4.83ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240808165800_rule_snoozes_store_decision_id.sql (3.81ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240812112700_rule_snoozes_store_rule_id.sql (13.11ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240829121800_upload_log_rows_ingested.sql (5.61ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240909134500_new_outcome_block_and_review.sql (4.88ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240909164400_workflows_migrate_new_outcome.sql (5.1ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240909165500_decisions_review_status.sql (2.12ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240909173500_decisions_drop_error_code.sql (2.38ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240910221600_decision_rules_org_id_idx.sql (13.37ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240923141200_remove_batch_trigger_sql.sql (2.28ms)
+marble-api       | 2025/03/22 20:20:39 OK   20240925120000_decision_rules_toast_setting.sql (2.41ms)
+marble-api       | 2025/03/22 20:20:39 OK   20241002123300_reworked_batch_execution.sql (11.25ms)
+marble-api       | 2025/03/22 20:20:39 OK   20241002223100_unique_batch_per_scenario.sql (4.73ms)
+marble-api       | 2025/03/22 20:20:39 OK   20241015171200_fields_and_constraint_cleanup.sql (5.34ms)
+marble-api       | 2025/03/22 20:20:39 OK   20241018170100_index_for_async_decision_creation.sql (6.94ms)
+marble-api       | 2025/03/22 20:20:39 OK   20241104103800_drop_constraint_enum_values.sql (2.65ms)
+marble-api       | 2025/03/22 20:20:39 OK   20241105131500_add_use_marble_db_schema_as_default.sql (2.03ms)
+marble-api       | 2025/03/22 20:20:39 OK   20241105143100_drop_analytics_schema.sql (4.94ms)
+marble-api       | 2025/03/22 20:20:39 OK   20241105151948_decision_phantom.sql (7.44ms)
+marble-api       | 2025/03/22 20:20:40 OK   20241105152000_scenario_testrun.sql (6.51ms)
+marble-api       | 2025/03/22 20:20:40 OK   20241105152100_decision_phantom_continued.sql (2.46ms)
+marble-api       | 2025/03/22 20:20:40 OK   20241203135200_scenario_rules_stable_id.sql (2.61ms)
+marble-api       | 2025/03/22 20:20:40 OK   20241204215200_phantom_decisions_index.sql (153.88ms)
+marble-api       | 2025/03/22 20:20:40 OK   20241209154100_org_default_timezone.sql (4.53ms)
+marble-api       | 2025/03/22 20:20:40 OK   20241210134900_licences_test_run.sql (7.15ms)
+marble-api       | 2025/03/22 20:20:40 OK   20241218115400_improve_decisions_indexes.sql (44.47ms)
+marble-api       | 2025/03/22 20:20:40 OK   20250102151657_case_name_template.sql (7.16ms)
+marble-api       | 2025/03/22 20:20:40 OK   20250108102844_add_organization_feature_access_table.sql (23.99ms)
+marble-api       | 2025/03/22 20:20:40 OK   20250117095221_fuzzy_match_on_case_name.sql (78.37ms)
+marble-api       | 2025/03/22 20:20:40 OK   20250117125000_add_sanction_check_config.sql (17.07ms)
+marble-api       | 2025/03/22 20:20:40 OK   20250120101100_sanction_check.sql (51.57ms)
+marble-api       | 2025/03/22 20:20:40 OK   20250210144400_create_sanctions_whitelist.sql (22.34ms)
+marble-api       | 2025/03/22 20:20:40 OK   20250217152700_drop_sanction_check_score_modif.sql (6.86ms)
+marble-api       | 2025/03/22 20:20:40 OK   20250217162300_change_sanction_check_status_check_and_fk_cascade.sql (7.94ms)
+marble-api       | 2025/03/22 20:20:40 OK   20250218103800_add_sanction_check_error_codes.sql (2.65ms)
+marble-api       | 2025/03/22 20:20:40 OK   20250226112700_add_sanction_check_match_enriched.sql (4.79ms)
+marble-api       | 2025/03/22 20:20:40 OK   20250303102000_create_test_run_summaries.sql (18.05ms)
+marble-api       | 2025/03/22 20:20:40 OK   20250303102400_add_sanction_check_stable_id.sql (4.39ms)
+marble-api       | 2025/03/22 20:20:40 OK   20250306160800_add_updated_time_to_test_runs.sql (2.8ms)
+marble-api       | 2025/03/22 20:20:40 goose: successfully migrated database to version: 20250306160800
+marble-api-cron exited with code 0
+marble-api-cron  | 2025-03-22T20:20:40Z INFO Flags shouldRunMigrations=false shouldRunServer=false shouldRunScheduledScenarios=false shouldRunDataIngestion=false shouldRunScheduler=false shouldRunSendPendingWebhookEvents=false shouldRunWorker=true
+marble-api-cron  | 2025/03/22 20:20:40 ENABLE_GCP_TRACING environment variable is not set, using default value 'false'
+marble-api-cron  | 2025/03/22 20:20:40 PG_CONNECTION_STRING environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:40 PG_MAX_POOL_SIZE environment variable is not set, using default value '40'
+marble-api-cron  | 2025/03/22 20:20:40 CLIENT_DB_CONFIG_FILE environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:40 PG_SSL_MODE environment variable is not set, using default value 'prefer'
+marble-api-cron  | 2025/03/22 20:20:40 CONVOY_API_KEY environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:40 CONVOY_API_URL environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:40 CONVOY_PROJECT_ID environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:40 CONVOY_RATE_LIMIT environment variable is not set, using default value '50'
+marble-api-cron  | 2025/03/22 20:20:40 OPENSANCTIONS_API_HOST environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:40 OPENSANCTIONS_AUTH_METHOD environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:40 OPENSANCTIONS_API_KEY environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:40 NAME_RECOGNITION_API_URL environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:40 KILL_IF_READ_LICENSE_ERROR environment variable is not set, using default value 'false'
+marble-api-cron  | 2025/03/22 20:20:40 FAILED_WEBHOOKS_RETRY_PAGE_SIZE environment variable is not set, using default value '1000'
+marble-api-cron  | 2025/03/22 20:20:40 LOGGING_FORMAT environment variable is not set, using default value 'text'
+marble-api-cron  | 2025/03/22 20:20:40 SENTRY_DSN environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:40 CLOUD_RUN_PROBE_PORT environment variable is not set, using default value ''
+marble-api       | 2025/03/22 20:20:40 MARBLE_BACKOFFICE_URL environment variable is not set, using default value ''
+marble-api       | 2025/03/22 20:20:40 REQUEST_LOGGING_LEVEL environment variable is not set, using default value 'all'
+marble-api       | 2025/03/22 20:20:40 TOKEN_LIFETIME_MINUTE environment variable is not set, using default value '120'
+marble-api       | 2025/03/22 20:20:40 BATCH_TIMEOUT_SECOND environment variable is not set, using default value '55'
+marble-api       | 2025/03/22 20:20:40 DECISION_TIMEOUT_SECOND environment variable is not set, using default value '10'
+marble-api       | 2025/03/22 20:20:40 DEFAULT_TIMEOUT_SECOND environment variable is not set, using default value '5'
+marble-api       | 2025/03/22 20:20:40 ENABLE_GCP_TRACING environment variable is not set, using default value 'false'
+marble-api       | 2025-03-22T20:20:40Z INFO No AUTHENTICATION_JWT_SIGNING_KEY received, generating a new key pair. This is not recommended for production environments as the key will not be stable in time
+marble-api       | 2025/03/22 20:20:40 GOOGLE_APPLICATION_CREDENTIALS environment variable is not set, using default value ''
+marble-api       | 2025/03/22 20:20:40 PG_CONNECTION_STRING environment variable is not set, using default value ''
+marble-api       | 2025/03/22 20:20:40 PG_MAX_POOL_SIZE environment variable is not set, using default value '40'
+marble-api       | 2025/03/22 20:20:40 CLIENT_DB_CONFIG_FILE environment variable is not set, using default value ''
+marble-api       | 2025/03/22 20:20:40 PG_SSL_MODE environment variable is not set, using default value 'prefer'
+marble-api       | 2025/03/22 20:20:40 METABASE_SITE_URL environment variable is not set, using default value ''
+marble-api       | 2025/03/22 20:20:40 METABASE_JWT_SIGNING_KEY environment variable is not set, using default value ''
+marble-api       | 2025/03/22 20:20:40 METABASE_TOKEN_LIFETIME_MINUTE environment variable is not set, using default value '10'
+marble-api       | 2025/03/22 20:20:40 METABASE_GLOBAL_DASHBOARD_ID environment variable is not set, using default value '0'
+marble-api       | 2025/03/22 20:20:40 CONVOY_API_KEY environment variable is not set, using default value ''
+marble-api       | 2025/03/22 20:20:40 CONVOY_API_URL environment variable is not set, using default value ''
+marble-api       | 2025/03/22 20:20:40 CONVOY_PROJECT_ID environment variable is not set, using default value ''
+marble-api       | 2025/03/22 20:20:40 CONVOY_RATE_LIMIT environment variable is not set, using default value '50'
+marble-api       | 2025/03/22 20:20:40 OPENSANCTIONS_API_HOST environment variable is not set, using default value ''
+marble-api       | 2025/03/22 20:20:40 OPENSANCTIONS_AUTH_METHOD environment variable is not set, using default value ''
+marble-api       | 2025/03/22 20:20:40 OPENSANCTIONS_API_KEY environment variable is not set, using default value ''
+marble-api       | 2025/03/22 20:20:40 NAME_RECOGNITION_API_URL environment variable is not set, using default value ''
+marble-api       | 2025/03/22 20:20:40 CREATE_GLOBAL_ADMIN_EMAIL environment variable is not set, using default value ''
+marble-api       | 2025/03/22 20:20:40 KILL_IF_READ_LICENSE_ERROR environment variable is not set, using default value 'false'
+marble-api       | 2025/03/22 20:20:40 BATCH_INGESTION_MAX_SIZE environment variable is not set, using default value '0'
+marble-api       | 2025/03/22 20:20:40 AUTHENTICATION_JWT_SIGNING_KEY environment variable is not set, using default value ''
+marble-api       | 2025/03/22 20:20:40 AUTHENTICATION_JWT_SIGNING_KEY_FILE environment variable is not set, using default value ''
+marble-api       | 2025/03/22 20:20:40 LOGGING_FORMAT environment variable is not set, using default value 'text'
+marble-api       | 2025/03/22 20:20:40 SENTRY_DSN environment variable is not set, using default value ''
+marble-api       | 2025/03/22 20:20:40 TRANSFER_CHECK_ENRICHMENT_BUCKET_URL environment variable is not set, using default value ''
+marble-api-cron  | 2025-03-22T20:20:41Z ERROR client Queues and Workers must be configured for a client to start working
+marble-api-cron  | 2025/03/22 20:20:41 client Queues and Workers must be configured for a client to start working
+marble-api       | 2025-03-22T20:20:41Z INFO Finish to create the default custom list for the organization
+marble-api       | 2025-03-22T20:20:41Z INFO Created organization ec724652-d594-44ca-b0ce-4626dffb410d with name Zorg
+marble-api       | 2025-03-22T20:20:41Z INFO Created admin user for organization ec724652-d594-44ca-b0ce-4626dffb410d with email jbe@zorg.com (or already exists)
+marble-api       | [GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+marble-api       |  - using env:        export GIN_MODE=release
+marble-api       |  - using code:       gin.SetMode(gin.ReleaseMode)
+marble-api       |
+marble-api       | 2025-03-22T20:20:41Z ERROR The url  does not contain a scheme (http or https), so it cannot be used for CORS. url=""
+marble-api       | [GIN-debug] GET    /liveness                 --> github.com/checkmarble/marble-backend/api.addRoutes.handleLivenessProbe.func1 (10 handlers)
+marble-api       | [GIN-debug] GET    /version                  --> github.com/checkmarble/marble-backend/api.addRoutes.handleVersion.func2 (10 handlers)
+marble-api       | [GIN-debug] POST   /token                    --> github.com/checkmarble/marble-backend/api.(*TokenHandler).GenerateToken-fm (10 handlers)
+marble-api       | [GIN-debug] GET    /validate-license/*license_key --> github.com/checkmarble/marble-backend/api.addRoutes.handleValidateLicense.func3 (10 handlers)
+marble-api       | [GIN-debug] GET    /is-sso-available         --> github.com/checkmarble/marble-backend/api.addRoutes.handleIsSSOEnabled.func4 (10 handlers)
+marble-api       | [GIN-debug] GET    /credentials              --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetCredentials.func5 (11 handlers)
+marble-api       | [GIN-debug] GET    /decisions                --> github.com/checkmarble/marble-backend/api.addRoutes.handleListDecisions.func6 (11 handlers)
+marble-api       | [GIN-debug] GET    /decisions/with-ranks     --> github.com/checkmarble/marble-backend/api.addRoutes.handleListDecisionsInternal.func7 (11 handlers)
+marble-api       | [GIN-debug] POST   /decisions                --> github.com/checkmarble/marble-backend/api.addRoutes.handlePostDecision.func8 (11 handlers)
+marble-api       | [GIN-debug] POST   /decisions/all            --> github.com/checkmarble/marble-backend/api.addRoutes.handlePostAllDecisions.func9 (11 handlers)
+marble-api       | [GIN-debug] GET    /decisions/:decision_id   --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetDecision.func10 (11 handlers)
+marble-api       | [GIN-debug] GET    /decisions/:decision_id/active-snoozes --> github.com/checkmarble/marble-backend/api.addRoutes.handleSnoozesOfDecision.func11 (11 handlers)
+marble-api       | [GIN-debug] POST   /decisions/:decision_id/snooze --> github.com/checkmarble/marble-backend/api.addRoutes.handleSnoozeDecision.func12 (11 handlers)
+marble-api       | [GIN-debug] POST   /ingestion/:object_type   --> github.com/checkmarble/marble-backend/api.addRoutes.handleIngestion.func13 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /ingestion/:object_type   --> github.com/checkmarble/marble-backend/api.addRoutes.handleIngestionPartialUpsert.func14 (11 handlers)
+marble-api       | [GIN-debug] POST   /ingestion/:object_type/multiple --> github.com/checkmarble/marble-backend/api.addRoutes.handleIngestionMultiple.func15 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /ingestion/:object_type/multiple --> github.com/checkmarble/marble-backend/api.addRoutes.handleIngestionMultiplePartialUpsert.func16 (11 handlers)
+marble-api       | [GIN-debug] POST   /ingestion/:object_type/batch --> github.com/checkmarble/marble-backend/api.addRoutes.handlePostCsvIngestion.func17 (11 handlers)
+marble-api       | [GIN-debug] GET    /ingestion/:object_type/upload-logs --> github.com/checkmarble/marble-backend/api.addRoutes.handleListUploadLogs.func18 (11 handlers)
+marble-api       | [GIN-debug] GET    /ingestion/:object_type/:object_id --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetIngestedObject.func19 (11 handlers)
+marble-api       | [GIN-debug] GET    /scenarios                --> github.com/checkmarble/marble-backend/api.addRoutes.listScenarios.func20 (11 handlers)
+marble-api       | [GIN-debug] POST   /scenarios                --> github.com/checkmarble/marble-backend/api.addRoutes.createScenario.func21 (11 handlers)
+marble-api       | [GIN-debug] GET    /scenarios/:scenario_id   --> github.com/checkmarble/marble-backend/api.addRoutes.getScenario.func22 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /scenarios/:scenario_id   --> github.com/checkmarble/marble-backend/api.addRoutes.updateScenario.func23 (11 handlers)
+marble-api       | [GIN-debug] POST   /scenarios/:scenario_id/validate-ast --> github.com/checkmarble/marble-backend/api.addRoutes.validateScenarioAst.func24 (11 handlers)
+marble-api       | [GIN-debug] GET    /scenario-iterations      --> github.com/checkmarble/marble-backend/api.addRoutes.handleListScenarioIterations.func25 (11 handlers)
+marble-api       | [GIN-debug] POST   /scenario-iterations      --> github.com/checkmarble/marble-backend/api.addRoutes.handleCreateScenarioIteration.func26 (11 handlers)
+marble-api       | [GIN-debug] GET    /scenario-iterations/:iteration_id --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetScenarioIteration.func27 (11 handlers)
+marble-api       | [GIN-debug] POST   /scenario-iterations/:iteration_id --> github.com/checkmarble/marble-backend/api.addRoutes.handleCreateDraftFromIteration.func28 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /scenario-iterations/:iteration_id --> github.com/checkmarble/marble-backend/api.addRoutes.handleUpdateScenarioIteration.func29 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /scenario-iterations/:iteration_id/sanction-check --> github.com/checkmarble/marble-backend/api.addRoutes.handleConfigureSanctionCheck.func30 (11 handlers)
+marble-api       | [GIN-debug] DELETE /scenario-iterations/:iteration_id/sanction-check --> github.com/checkmarble/marble-backend/api.addRoutes.handleDeleteSanctionCheckConfig.func31 (11 handlers)
+marble-api       | [GIN-debug] POST   /scenario-iterations/:iteration_id/validate --> github.com/checkmarble/marble-backend/api.addRoutes.handleValidateScenarioIteration.func32 (11 handlers)
+marble-api       | [GIN-debug] POST   /scenario-iterations/:iteration_id/commit --> github.com/checkmarble/marble-backend/api.addRoutes.handleCommitScenarioIterationVersion.func33 (11 handlers)
+marble-api       | [GIN-debug] POST   /scenario-iterations/:iteration_id/schedule-execution --> github.com/checkmarble/marble-backend/api.addRoutes.handleCreateScheduledExecution.func34 (11 handlers)
+marble-api       | [GIN-debug] GET    /scenario-iterations/:iteration_id/active-snoozes --> github.com/checkmarble/marble-backend/api.addRoutes.handleSnoozesOfScenarioIteration.func35 (11 handlers)
+marble-api       | [GIN-debug] GET    /scenario-iteration-rules --> github.com/checkmarble/marble-backend/api.addRoutes.handleListRules.func36 (11 handlers)
+marble-api       | [GIN-debug] POST   /scenario-iteration-rules --> github.com/checkmarble/marble-backend/api.addRoutes.handleCreateRule.func37 (11 handlers)
+marble-api       | [GIN-debug] GET    /scenario-iteration-rules/:rule_id --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetRule.func38 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /scenario-iteration-rules/:rule_id --> github.com/checkmarble/marble-backend/api.addRoutes.handleUpdateRule.func39 (11 handlers)
+marble-api       | [GIN-debug] DELETE /scenario-iteration-rules/:rule_id --> github.com/checkmarble/marble-backend/api.addRoutes.handleDeleteRule.func40 (11 handlers)
+marble-api       | [GIN-debug] GET    /sanction-checks/freshness --> github.com/checkmarble/marble-backend/api.addRoutes.handleSanctionCheckDatasetFreshness.func41 (11 handlers)
+marble-api       | [GIN-debug] GET    /sanction-checks/datasets --> github.com/checkmarble/marble-backend/api.addRoutes.handleSanctionCheckDatasetCatalog.func42 (11 handlers)
+marble-api       | [GIN-debug] GET    /sanction-checks          --> github.com/checkmarble/marble-backend/api.addRoutes.handleListSanctionChecks.func43 (11 handlers)
+marble-api       | [GIN-debug] POST   /sanction-checks/refine   --> github.com/checkmarble/marble-backend/api.addRoutes.handleRefineSanctionCheck.func44 (11 handlers)
+marble-api       | [GIN-debug] POST   /sanction-checks/search   --> github.com/checkmarble/marble-backend/api.addRoutes.handleSearchSanctionCheck.func45 (11 handlers)
+marble-api       | [GIN-debug] POST   /sanction-checks/:sanctionCheckId/files --> github.com/checkmarble/marble-backend/api.addRoutes.handleUploadSanctionCheckMatchFile.func46 (11 handlers)
+marble-api       | [GIN-debug] GET    /sanction-checks/:sanctionCheckId/files --> github.com/checkmarble/marble-backend/api.addRoutes.handleListSanctionCheckMatchFiles.func47 (11 handlers)
+marble-api       | [GIN-debug] GET    /sanction-checks/:sanctionCheckId/files/:fileId --> github.com/checkmarble/marble-backend/api.addRoutes.handleDownloadSanctionCheckMatchFile.func48 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /sanction-checks/matches/:id --> github.com/checkmarble/marble-backend/api.addRoutes.handleUpdateSanctionCheckMatchStatus.func49 (11 handlers)
+marble-api       | [GIN-debug] POST   /sanction-checks/matches/:id/enrich --> github.com/checkmarble/marble-backend/api.addRoutes.handleEnrichSanctionCheckMatch.func50 (11 handlers)
+marble-api       | [GIN-debug] GET    /scenario-publications    --> github.com/checkmarble/marble-backend/api.addRoutes.handleListScenarioPublications.func51 (11 handlers)
+marble-api       | [GIN-debug] POST   /scenario-publications    --> github.com/checkmarble/marble-backend/api.addRoutes.handleCreateScenarioPublication.func52 (11 handlers)
+marble-api       | [GIN-debug] GET    /scenario-publications/preparation --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetPublicationPreparationStatus.func53 (11 handlers)
+marble-api       | [GIN-debug] POST   /scenario-publications/preparation --> github.com/checkmarble/marble-backend/api.addRoutes.handleStartPublicationPreparation.func54 (11 handlers)
+marble-api       | [GIN-debug] GET    /scenario-publications/:publication_id --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetScenarioPublication.func55 (11 handlers)
+marble-api       | [GIN-debug] POST   /scenario-testrun         --> github.com/checkmarble/marble-backend/api.addRoutes.handleCreateScenarioTestRun.func56 (11 handlers)
+marble-api       | [GIN-debug] GET    /scenario-testrun         --> github.com/checkmarble/marble-backend/api.addRoutes.handleListScenarioTestRun.func57 (11 handlers)
+marble-api       | [GIN-debug] GET    /scenario-testruns/:test_run_id/decision_data_by_score --> github.com/checkmarble/marble-backend/api.addRoutes.handleDecisionsDataByOutcomeAndScore.func58 (11 handlers)
+marble-api       | [GIN-debug] GET    /scenario-testruns/:test_run_id/data_by_rule_execution --> github.com/checkmarble/marble-backend/api.addRoutes.handleTestRunStatsByRulesExecution.func59 (11 handlers)
+marble-api       | [GIN-debug] GET    /scenario-testruns/:test_run_id --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetScenarioTestRun.func60 (11 handlers)
+marble-api       | [GIN-debug] POST   /scenario-testruns/:test_run_id/cancel --> github.com/checkmarble/marble-backend/api.addRoutes.handleCancelScenarioTestRun.func61 (11 handlers)
+marble-api       | [GIN-debug] GET    /scheduled-executions     --> github.com/checkmarble/marble-backend/api.addRoutes.handleListScheduledExecution.func62 (11 handlers)
+marble-api       | [GIN-debug] GET    /scheduled-executions/:execution_id --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetScheduledExecution.func63 (11 handlers)
+marble-api       | [GIN-debug] GET    /analytics                --> github.com/checkmarble/marble-backend/api.addRoutes.handleListAnalytics.func64 (11 handlers)
+marble-api       | [GIN-debug] GET    /apikeys                  --> github.com/checkmarble/marble-backend/api.addRoutes.handleListApiKeys.func65 (11 handlers)
+marble-api       | [GIN-debug] POST   /apikeys                  --> github.com/checkmarble/marble-backend/api.addRoutes.handlePostApiKey.func66 (11 handlers)
+marble-api       | [GIN-debug] DELETE /apikeys/:api_key_id      --> github.com/checkmarble/marble-backend/api.addRoutes.handleRevokeApiKey.func67 (11 handlers)
+marble-api       | [GIN-debug] GET    /custom-lists             --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetAllCustomLists.func68 (11 handlers)
+marble-api       | [GIN-debug] POST   /custom-lists             --> github.com/checkmarble/marble-backend/api.addRoutes.handlePostCustomList.func69 (11 handlers)
+marble-api       | [GIN-debug] GET    /custom-lists/:list_id    --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetCustomListWithValues.func70 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /custom-lists/:list_id    --> github.com/checkmarble/marble-backend/api.addRoutes.handlePatchCustomList.func71 (11 handlers)
+marble-api       | [GIN-debug] DELETE /custom-lists/:list_id    --> github.com/checkmarble/marble-backend/api.addRoutes.handleDeleteCustomList.func72 (11 handlers)
+marble-api       | [GIN-debug] GET    /custom-lists/:list_id/values --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetCsvCustomListValues.func73 (11 handlers)
+marble-api       | [GIN-debug] POST   /custom-lists/:list_id/values --> github.com/checkmarble/marble-backend/api.addRoutes.handlePostCustomListValue.func74 (11 handlers)
+marble-api       | [GIN-debug] POST   /custom-lists/:list_id/values/batch --> github.com/checkmarble/marble-backend/api.addRoutes.handlePostCsvCustomListValues.func75 (11 handlers)
+marble-api       | [GIN-debug] DELETE /custom-lists/:list_id/values/:value_id --> github.com/checkmarble/marble-backend/api.addRoutes.handleDeleteCustomListValue.func76 (11 handlers)
+marble-api       | [GIN-debug] GET    /editor/:scenario_id/identifiers --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetEditorIdentifiers.func77 (11 handlers)
+marble-api       | [GIN-debug] GET    /users                    --> github.com/checkmarble/marble-backend/api.addRoutes.handleListUsers.func78 (11 handlers)
+marble-api       | [GIN-debug] POST   /users                    --> github.com/checkmarble/marble-backend/api.addRoutes.handlePostUser.func79 (11 handlers)
+marble-api       | [GIN-debug] GET    /users/:user_id           --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetUser.func80 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /users/:user_id           --> github.com/checkmarble/marble-backend/api.addRoutes.handlePatchUser.func81 (11 handlers)
+marble-api       | [GIN-debug] DELETE /users/:user_id           --> github.com/checkmarble/marble-backend/api.addRoutes.handleDeleteUser.func82 (11 handlers)
+marble-api       | [GIN-debug] GET    /organizations/:organization_id/users --> github.com/checkmarble/marble-backend/api.addRoutes.handleListUsers.func83 (11 handlers)
+marble-api       | [GIN-debug] GET    /organizations            --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetOrganizations.func84 (11 handlers)
+marble-api       | [GIN-debug] POST   /organizations            --> github.com/checkmarble/marble-backend/api.addRoutes.handlePostOrganization.func85 (11 handlers)
+marble-api       | [GIN-debug] GET    /organizations/:organization_id --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetOrganization.func86 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /organizations/:organization_id --> github.com/checkmarble/marble-backend/api.addRoutes.handlePatchOrganization.func87 (11 handlers)
+marble-api       | [GIN-debug] DELETE /organizations/:organization_id --> github.com/checkmarble/marble-backend/api.addRoutes.handleDeleteOrganization.func88 (11 handlers)
+marble-api       | [GIN-debug] GET    /organizations/:organization_id/feature_access --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetOrganizationFeatureAccess.func89 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /organizations/:organization_id/feature_access --> github.com/checkmarble/marble-backend/api.addRoutes.handlePatchOrganizationFeatureAccess.func90 (11 handlers)
+marble-api       | [GIN-debug] GET    /partners                 --> github.com/checkmarble/marble-backend/api.addRoutes.handleListPartners.func91 (11 handlers)
+marble-api       | [GIN-debug] POST   /partners                 --> github.com/checkmarble/marble-backend/api.addRoutes.handleCreatePartner.func92 (11 handlers)
+marble-api       | [GIN-debug] GET    /partners/:partner_id     --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetPartner.func93 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /partners/:partner_id     --> github.com/checkmarble/marble-backend/api.addRoutes.handleUpdatePartner.func94 (11 handlers)
+marble-api       | [GIN-debug] GET    /cases                    --> github.com/checkmarble/marble-backend/api.addRoutes.handleListCases.func95 (11 handlers)
+marble-api       | [GIN-debug] POST   /cases                    --> github.com/checkmarble/marble-backend/api.addRoutes.handlePostCase.func96 (11 handlers)
+marble-api       | [GIN-debug] GET    /cases/:case_id           --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetCase.func97 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /cases/:case_id           --> github.com/checkmarble/marble-backend/api.addRoutes.handlePatchCase.func98 (11 handlers)
+marble-api       | [GIN-debug] POST   /cases/:case_id/decisions --> github.com/checkmarble/marble-backend/api.addRoutes.handlePostCaseDecisions.func99 (11 handlers)
+marble-api       | [GIN-debug] POST   /cases/:case_id/comments  --> github.com/checkmarble/marble-backend/api.addRoutes.handlePostCaseComment.func100 (11 handlers)
+marble-api       | [GIN-debug] POST   /cases/:case_id/case_tags --> github.com/checkmarble/marble-backend/api.addRoutes.handlePostCaseTags.func101 (11 handlers)
+marble-api       | [GIN-debug] POST   /cases/:case_id/files     --> github.com/checkmarble/marble-backend/api.addRoutes.handlePostCaseFile.func103 (12 handlers)
+marble-api       | [GIN-debug] GET    /cases/files/:case_file_id/download_link --> github.com/checkmarble/marble-backend/api.addRoutes.handleDownloadCaseFile.func104 (11 handlers)
+marble-api       | [GIN-debug] POST   /cases/review_decision    --> github.com/checkmarble/marble-backend/api.addRoutes.handleReviewCaseDecisions.func105 (11 handlers)
+marble-api       | [GIN-debug] GET    /inboxes/:inbox_id        --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetInboxById.func106 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /inboxes/:inbox_id        --> github.com/checkmarble/marble-backend/api.addRoutes.handlePatchInbox.func107 (11 handlers)
+marble-api       | [GIN-debug] DELETE /inboxes/:inbox_id        --> github.com/checkmarble/marble-backend/api.addRoutes.handleDeleteInbox.func108 (11 handlers)
+marble-api       | [GIN-debug] GET    /inboxes                  --> github.com/checkmarble/marble-backend/api.addRoutes.handleListInboxes.func109 (11 handlers)
+marble-api       | [GIN-debug] POST   /inboxes                  --> github.com/checkmarble/marble-backend/api.addRoutes.handlePostInbox.func110 (11 handlers)
+marble-api       | [GIN-debug] GET    /inbox_users              --> github.com/checkmarble/marble-backend/api.addRoutes.handleListAllInboxUsers.func111 (11 handlers)
+marble-api       | [GIN-debug] GET    /inbox_users/:inbox_user_id --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetInboxUserById.func112 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /inbox_users/:inbox_user_id --> github.com/checkmarble/marble-backend/api.addRoutes.handlePatchInboxUser.func113 (11 handlers)
+marble-api       | [GIN-debug] DELETE /inbox_users/:inbox_user_id --> github.com/checkmarble/marble-backend/api.addRoutes.handleDeleteInboxUser.func114 (11 handlers)
+marble-api       | [GIN-debug] GET    /inboxes/:inbox_id/users  --> github.com/checkmarble/marble-backend/api.addRoutes.handleListInboxUsers.func115 (11 handlers)
+marble-api       | [GIN-debug] POST   /inboxes/:inbox_id/users  --> github.com/checkmarble/marble-backend/api.addRoutes.handlePostInboxUser.func116 (11 handlers)
+marble-api       | [GIN-debug] GET    /tags                     --> github.com/checkmarble/marble-backend/api.addRoutes.handleListTags.func117 (11 handlers)
+marble-api       | [GIN-debug] POST   /tags                     --> github.com/checkmarble/marble-backend/api.addRoutes.handlePostTag.func118 (11 handlers)
+marble-api       | [GIN-debug] GET    /tags/:tag_id             --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetTag.func119 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /tags/:tag_id             --> github.com/checkmarble/marble-backend/api.addRoutes.handlePatchTag.func120 (11 handlers)
+marble-api       | [GIN-debug] DELETE /tags/:tag_id             --> github.com/checkmarble/marble-backend/api.addRoutes.handleDeleteTag.func121 (11 handlers)
+marble-api       | [GIN-debug] GET    /data-model               --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetDataModel.func122 (11 handlers)
+marble-api       | [GIN-debug] POST   /data-model/tables        --> github.com/checkmarble/marble-backend/api.addRoutes.handleCreateTable.func123 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /data-model/tables/:tableID --> github.com/checkmarble/marble-backend/api.addRoutes.handleUpdateDataModelTable.func124 (11 handlers)
+marble-api       | [GIN-debug] POST   /data-model/links         --> github.com/checkmarble/marble-backend/api.addRoutes.handleCreateLink.func125 (11 handlers)
+marble-api       | [GIN-debug] POST   /data-model/tables/:tableID/fields --> github.com/checkmarble/marble-backend/api.addRoutes.handleCreateField.func126 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /data-model/fields/:fieldID --> github.com/checkmarble/marble-backend/api.addRoutes.handleUpdateDataModelField.func127 (11 handlers)
+marble-api       | [GIN-debug] DELETE /data-model               --> github.com/checkmarble/marble-backend/api.addRoutes.handleDeleteDataModel.func128 (11 handlers)
+marble-api       | [GIN-debug] GET    /data-model/openapi       --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetOpenAPI.func129 (11 handlers)
+marble-api       | [GIN-debug] POST   /data-model/pivots        --> github.com/checkmarble/marble-backend/api.addRoutes.handleCreateDataModelPivot.func130 (11 handlers)
+marble-api       | [GIN-debug] GET    /data-model/pivots        --> github.com/checkmarble/marble-backend/api.addRoutes.handleListDataModelPivots.func131 (11 handlers)
+marble-api       | [GIN-debug] POST   /transfers                --> github.com/checkmarble/marble-backend/api.addRoutes.handleCreateTransfer.func132 (11 handlers)
+marble-api       | [GIN-debug] GET    /transfers                --> github.com/checkmarble/marble-backend/api.addRoutes.handleQueryTransfers.func133 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /transfers/:transfer_id   --> github.com/checkmarble/marble-backend/api.addRoutes.handleUpdateTransfer.func134 (11 handlers)
+marble-api       | [GIN-debug] GET    /transfers/:transfer_id   --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetTransfer.func135 (11 handlers)
+marble-api       | [GIN-debug] POST   /transfers/:transfer_id/score --> github.com/checkmarble/marble-backend/api.addRoutes.handleScoreTransfer.func136 (11 handlers)
+marble-api       | [GIN-debug] POST   /transfer/alerts          --> github.com/checkmarble/marble-backend/api.addRoutes.handleCreateTransferAlert.func137 (11 handlers)
+marble-api       | [GIN-debug] GET    /transfer/sent/alerts/:alert_id --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetTransferAlertSender.func138 (11 handlers)
+marble-api       | [GIN-debug] GET    /transfer/received/alerts/:alert_id --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetTransferAlertBeneficiary.func139 (11 handlers)
+marble-api       | [GIN-debug] GET    /transfer/sent/alerts     --> github.com/checkmarble/marble-backend/api.addRoutes.handleListTransferAlertsSender.func140 (11 handlers)
+marble-api       | [GIN-debug] GET    /transfer/received/alerts --> github.com/checkmarble/marble-backend/api.addRoutes.handleListTransferAlertsBeneficiary.func141 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /transfer/sent/alerts/:alert_id --> github.com/checkmarble/marble-backend/api.addRoutes.handleUpdateTransferAlertSender.func142 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /transfer/received/alerts/:alert_id --> github.com/checkmarble/marble-backend/api.addRoutes.handleUpdateTransferAlertBeneficiary.func143 (11 handlers)
+marble-api       | [GIN-debug] GET    /licenses                 --> github.com/checkmarble/marble-backend/api.addRoutes.handleListLicenses.func144 (11 handlers)
+marble-api       | [GIN-debug] POST   /licenses                 --> github.com/checkmarble/marble-backend/api.addRoutes.handleCreateLicense.func145 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /licenses/:license_id     --> github.com/checkmarble/marble-backend/api.addRoutes.handleUpdateLicense.func146 (11 handlers)
+marble-api       | [GIN-debug] GET    /licenses/:license_id     --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetLicenseById.func147 (11 handlers)
+marble-api       | [GIN-debug] GET    /webhooks                 --> github.com/checkmarble/marble-backend/api.addRoutes.handleListWebhooks.func148 (11 handlers)
+marble-api       | [GIN-debug] POST   /webhooks                 --> github.com/checkmarble/marble-backend/api.addRoutes.handleRegisterWebhook.func149 (11 handlers)
+marble-api       | [GIN-debug] GET    /webhooks/:webhook_id     --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetWebhook.func150 (11 handlers)
+marble-api       | [GIN-debug] PATCH  /webhooks/:webhook_id     --> github.com/checkmarble/marble-backend/api.addRoutes.handleUpdateWebhook.func151 (11 handlers)
+marble-api       | [GIN-debug] DELETE /webhooks/:webhook_id     --> github.com/checkmarble/marble-backend/api.addRoutes.handleDeleteWebhook.func152 (11 handlers)
+marble-api       | [GIN-debug] GET    /rule-snoozes/:rule_snooze_id --> github.com/checkmarble/marble-backend/api.addRoutes.handleGetSnoozesById.func153 (11 handlers)
+marble-api       | 2025-03-22T20:20:41Z INFO starting server version=v0.38.6 port=8080
+marble-api-cron exited with code 0
+marble-api-cron  | 2025-03-22T20:20:42Z INFO Flags shouldRunMigrations=false shouldRunServer=false shouldRunScheduledScenarios=false shouldRunDataIngestion=false shouldRunScheduler=false shouldRunSendPendingWebhookEvents=false shouldRunWorker=true
+marble-api-cron  | 2025/03/22 20:20:42 ENABLE_GCP_TRACING environment variable is not set, using default value 'false'
+marble-api-cron  | 2025/03/22 20:20:42 PG_CONNECTION_STRING environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:42 PG_MAX_POOL_SIZE environment variable is not set, using default value '40'
+marble-api-cron  | 2025/03/22 20:20:42 CLIENT_DB_CONFIG_FILE environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:42 PG_SSL_MODE environment variable is not set, using default value 'prefer'
+marble-api-cron  | 2025/03/22 20:20:42 CONVOY_API_KEY environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:42 CONVOY_API_URL environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:42 CONVOY_PROJECT_ID environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:42 CONVOY_RATE_LIMIT environment variable is not set, using default value '50'
+marble-api-cron  | 2025/03/22 20:20:42 OPENSANCTIONS_API_HOST environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:42 OPENSANCTIONS_AUTH_METHOD environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:42 OPENSANCTIONS_API_KEY environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:42 NAME_RECOGNITION_API_URL environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:42 KILL_IF_READ_LICENSE_ERROR environment variable is not set, using default value 'false'
+marble-api-cron  | 2025/03/22 20:20:42 FAILED_WEBHOOKS_RETRY_PAGE_SIZE environment variable is not set, using default value '1000'
+marble-api-cron  | 2025/03/22 20:20:42 LOGGING_FORMAT environment variable is not set, using default value 'text'
+marble-api-cron  | 2025/03/22 20:20:42 SENTRY_DSN environment variable is not set, using default value ''
+marble-api-cron  | 2025/03/22 20:20:42 CLOUD_RUN_PROBE_PORT environment variable is not set, using default value ''
+marble-api       | 2025-03-22T20:20:42Z INFO GET /liveness status=200 latency=5 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api-cron  | 2025-03-22T20:20:42Z INFO starting worker version=v0.38.6
+marble-api-cron  | 2025/03/22 20:20:42 [tasker] next tick on 2025/03/22 21:21:00
+marble-api-cron  | 2025-03-22T20:20:44Z INFO Starting index_cleanup job n°1 - attempt 1 job_id=1 job_kind=index_cleanup job_attempt=1 last_attempted_at=2025-03-22T20:20:44.855029Z created_at=2025-03-22T20:20:44.787Z queue=ec724652-d594-44ca-b0ce-4626dffb410d priority=1
+marble-api-cron  | 2025-03-22T20:20:44Z INFO Starting test_run_summary job n°2 - attempt 1 job_id=2 job_kind=test_run_summary job_attempt=1 last_attempted_at=2025-03-22T20:20:44.855029Z created_at=2025-03-22T20:20:44.787Z queue=ec724652-d594-44ca-b0ce-4626dffb410d priority=1
+marble-api-cron  | 2025-03-22T20:20:44Z INFO test_run_summary job n°2 succeeded after 15.313388ms job_id=2 job_kind=test_run_summary job_attempt=1 last_attempted_at=2025-03-22T20:20:44.855029Z created_at=2025-03-22T20:20:44.787Z queue=ec724652-d594-44ca-b0ce-4626dffb410d priority=1
+marble-api-cron  | 2025-03-22T20:20:44Z INFO index_cleanup job n°1 succeeded after 41.450561ms job_id=1 job_kind=index_cleanup job_attempt=1 last_attempted_at=2025-03-22T20:20:44.855029Z created_at=2025-03-22T20:20:44.787Z queue=ec724652-d594-44ca-b0ce-4626dffb410d priority=1
+marble-yente     | 2025-03-22T20:20:49.226450Z [info     ] Setting up background refresh  [yente] auto_reindex=True crontab=45 * * * *
+marble-app       | [remix-serve] http://localhost:8080 (http://172.20.0.8:8080)
+marble-yente     | 2025-03-22T20:20:51.705899Z [info     ] HTTP Request: GET https://data.opensanctions.org/datasets/latest/index.json "HTTP/1.1 200 OK" [httpx]
+marble-api       | 2025-03-22T20:20:52Z INFO GET /liveness status=200 latency=15 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-yente     | 2025-03-22T20:20:53.760500Z [info     ] Index update check             [yente.search.indexer]
+marble-yente     | 2025-03-22T20:20:53.975706Z [info     ] Indexing entities              [yente.search.indexer] base_version=None dataset=us_sanctions force=False incremental=False url=https://data.opensanctions.org/datasets/20250322/us_sanctions/entities.ftm.json?v=20250322182715-ehh version=20250322182715-ehh
+marble-yente     | 2025-03-22T20:20:54.001144Z [info     ] Create index                   [yente.provider.elastic] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-es        | {"@timestamp":"2025-03-22T20:20:54.615Z", "log.level": "INFO", "message":"[yente-entities-us_sanctions-011030712-20250322182715-ehh] creating index, cause [api], templates [], shards [1]/[1]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[es][masterService#updateTask][T#2]","log.logger":"org.elasticsearch.cluster.metadata.MetadataCreateIndexService","elasticsearch.cluster.uuid":"HsUHTQGJT3ybtGsJMdmYDQ","elasticsearch.node.id":"qoc8VLpuSJ-zHoZvfLfmyg","elasticsearch.node.name":"es","elasticsearch.cluster.name":"marble-es"}
+marble-es        | {"@timestamp":"2025-03-22T20:20:54.691Z", "log.level": "INFO", "message":"updating number_of_replicas to [0] for indices [yente-entities-us_sanctions-011030712-20250322182715-ehh]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[es][masterService#updateTask][T#2]","log.logger":"org.elasticsearch.cluster.routing.allocation.AllocationService","elasticsearch.cluster.uuid":"HsUHTQGJT3ybtGsJMdmYDQ","elasticsearch.node.id":"qoc8VLpuSJ-zHoZvfLfmyg","elasticsearch.node.name":"es","elasticsearch.cluster.name":"marble-es"}
+marble-es        | {"@timestamp":"2025-03-22T20:20:55.444Z", "log.level": "INFO",  "current.health":"GREEN","message":"Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[yente-entities-us_sanctions-011030712-20250322182715-ehh][0]]]).","previous.health":"YELLOW","reason":"shards started [[yente-entities-us_sanctions-011030712-20250322182715-ehh][0]]" , "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[es][masterService#updateTask][T#2]","log.logger":"org.elasticsearch.cluster.routing.allocation.AllocationService","elasticsearch.cluster.uuid":"HsUHTQGJT3ybtGsJMdmYDQ","elasticsearch.node.id":"qoc8VLpuSJ-zHoZvfLfmyg","elasticsearch.node.name":"es","elasticsearch.cluster.name":"marble-es"}
+marble-yente     | 2025-03-22T20:20:55.505651Z [info     ] Streaming data                 [yente.data.loader] url=https://data.opensanctions.org/datasets/20250322/us_sanctions/entities.ftm.json?v=20250322182715-ehh
+marble-yente     | 2025-03-22T20:20:56.106834Z [info     ] HTTP Request: GET https://data.opensanctions.org/datasets/20250322/us_sanctions/entities.ftm.json?v=20250322182715-ehh "HTTP/1.1 200 OK" [httpx]
+marble-yente     | 2025-03-22T20:20:57.567914Z [info     ] Index: 1000 entities...        [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-api-cron  | 2025/03/22 20:21:00 [tasker] running 2 due tasks
+marble-api-cron  | 2025/03/22 20:21:00 [tasker] task [* * * * *][#1] running
+marble-api-cron  | 2025-03-22T20:21:00Z INFO Start job batch-ingestion 2025-03-22T20:21:00Z INFO Start job scheduled-execution job=ingest_data_from_csv
+marble-api-cron  | job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025/03/22 20:21:00 [tasker] task [* * * * *][#2] running
+marble-api-cron  | 2025/03/22 20:21:00 [tasker] next tick on 2025/03/22 21:22:00
+marble-api-cron  | 2025-03-22T20:21:01Z INFO Start ingesting data from upload logs job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:21:01Z INFO Done scheduling all due scenarios job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:21:01Z INFO Found 0 upload logs of data to ingest job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:21:01Z INFO Done executing job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025/03/22 20:21:01 [tasker] task [* * * * *][#2] ran successfully
+marble-api-cron  | 2025-03-22T20:21:01Z INFO Found 0 pending scheduled executions job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025/03/22 20:21:01 [tasker] task [* * * * *][#1] ran successfully
+marble-api-cron  | 2025-03-22T20:21:01Z INFO Done executing job scheduled-execution job=execute_all_scheduled_scenarios
+marble-yente     | 2025-03-22T20:21:02.846896Z [info     ] Index: 2000 entities...        [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-api       | 2025-03-22T20:21:02Z INFO GET /liveness status=200 latency=4 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-yente     | 2025-03-22T20:21:04.230538Z [info     ] Index: 3000 entities...        [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:05.552051Z [info     ] Index: 4000 entities...        [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:06.920641Z [info     ] Index: 5000 entities...        [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:08.089352Z [info     ] Index: 6000 entities...        [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:09.601164Z [info     ] Index: 7000 entities...        [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:11.192441Z [info     ] Index: 8000 entities...        [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-es        | {"@timestamp":"2025-03-22T20:21:13.082Z", "log.level": "INFO", "message":"[gc][202] overhead, spent [645ms] collecting in the last [1.3s]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[es][scheduler][T#1]","log.logger":"org.elasticsearch.monitor.jvm.JvmGcMonitorService","elasticsearch.cluster.uuid":"HsUHTQGJT3ybtGsJMdmYDQ","elasticsearch.node.id":"qoc8VLpuSJ-zHoZvfLfmyg","elasticsearch.node.name":"es","elasticsearch.cluster.name":"marble-es"}
+marble-api       | 2025-03-22T20:21:13Z INFO GET /liveness status=200 latency=3 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-es        | {"@timestamp":"2025-03-22T20:21:14.092Z", "log.level": "INFO", "message":"[gc][young][203][9] duration [720ms], collections [1]/[1.7s], total [720ms]/[1.4s], memory [108.3mb]->[130.7mb]/[2gb], all_pools {[young] [0b]->[20mb]/[0b]}{[old] [8.3mb]->[105mb]/[2gb]}{[survivor] [99.9mb]->[5.7mb]/[0b]}", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[es][scheduler][T#1]","log.logger":"org.elasticsearch.monitor.jvm.JvmGcMonitorService","elasticsearch.cluster.uuid":"HsUHTQGJT3ybtGsJMdmYDQ","elasticsearch.node.id":"qoc8VLpuSJ-zHoZvfLfmyg","elasticsearch.node.name":"es","elasticsearch.cluster.name":"marble-es"}
+marble-es        | {"@timestamp":"2025-03-22T20:21:14.092Z", "log.level": "INFO", "message":"[gc][203] overhead, spent [720ms] collecting in the last [1.7s]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[es][scheduler][T#1]","log.logger":"org.elasticsearch.monitor.jvm.JvmGcMonitorService","elasticsearch.cluster.uuid":"HsUHTQGJT3ybtGsJMdmYDQ","elasticsearch.node.id":"qoc8VLpuSJ-zHoZvfLfmyg","elasticsearch.node.name":"es","elasticsearch.cluster.name":"marble-es"}
+marble-yente     | 2025-03-22T20:21:14.337504Z [info     ] Index: 9000 entities...        [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:15.982694Z [info     ] Index: 10000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:17.944642Z [info     ] Index: 11000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:19.383717Z [info     ] Index: 12000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:20.908593Z [info     ] Index: 13000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:22.109996Z [info     ] Index: 14000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-api       | 2025-03-22T20:21:23Z INFO GET /liveness status=200 latency=1 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-yente     | 2025-03-22T20:21:23.524189Z [info     ] Index: 15000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:24.698844Z [info     ] Index: 16000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:25.768060Z [info     ] Index: 17000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:27.109705Z [info     ] Index: 18000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:28.260429Z [info     ] Index: 19000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:29.262624Z [info     ] Index: 20000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:29.919932Z [info     ] Index: 21000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:30.508349Z [info     ] Index: 22000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:30.746030Z [info     ] Index: 23000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:30.996386Z [info     ] Index: 24000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:31.189411Z [info     ] Index: 25000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:31.387495Z [info     ] Index: 26000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:31.746748Z [info     ] Index: 27000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:31.947854Z [info     ] Index: 28000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:32.150608Z [info     ] Index: 29000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:32.376094Z [info     ] Index: 30000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:32.556838Z [info     ] Index: 31000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:32.749435Z [info     ] Index: 32000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:33.084992Z [info     ] Index: 33000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:33.271818Z [info     ] Index: 34000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-api       | 2025-03-22T20:21:33Z INFO GET /liveness status=200 latency=1 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-yente     | 2025-03-22T20:21:33.485640Z [info     ] Index: 35000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:33.714198Z [info     ] Index: 36000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:33.929545Z [info     ] Index: 37000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:34.312545Z [info     ] Index: 38000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:34.565897Z [info     ] Index: 39000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:34.781496Z [info     ] Index: 40000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:34.981748Z [info     ] Index: 41000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:35.367416Z [info     ] Index: 42000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:35.598567Z [info     ] Index: 43000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:35.824892Z [info     ] Index: 44000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:36.071057Z [info     ] Index: 45000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:36.359705Z [info     ] Index: 46000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:36.787438Z [info     ] Index: 47000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:37.052387Z [info     ] Index: 48000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:37.320286Z [info     ] Index: 49000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:37.556682Z [info     ] Index: 50000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:37.770274Z [info     ] Index: 51000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:38.145445Z [info     ] Index: 52000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:38.456673Z [info     ] Index: 53000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:38.681402Z [info     ] Index: 54000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:38.891111Z [info     ] Index: 55000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:39.223896Z [info     ] Index: 56000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:39.437967Z [info     ] Index: 57000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:39.662833Z [info     ] Index: 58000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:39.866628Z [info     ] Index: 59000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:40.118778Z [info     ] Index: 60000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:40.532676Z [info     ] Index: 61000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:40.782975Z [info     ] Index: 62000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:40.996081Z [info     ] Index: 63000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:41.194394Z [info     ] Index: 64000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:41.391005Z [info     ] Index: 65000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:41.735627Z [info     ] Index: 66000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:41.946244Z [info     ] Index: 67000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:42.165714Z [info     ] Index: 68000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:42.564412Z [info     ] Index: 69000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:43.165867Z [info     ] Index: 70000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-api       | 2025-03-22T20:21:43Z INFO GET /liveness status=200 latency=1 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-yente     | 2025-03-22T20:21:43.554964Z [info     ] Index: 71000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:43.915370Z [info     ] Index: 72000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:44.235887Z [info     ] Index: 73000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:44.571314Z [info     ] Index: 74000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:45.087455Z [info     ] Index: 75000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:45.465538Z [info     ] Index: 76000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:45.893232Z [info     ] Index: 77000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:46.308296Z [info     ] Index: 78000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:46.867581Z [info     ] Index: 79000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:47.220082Z [info     ] Index: 80000 entities...       [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:47.567689Z [info     ] Indexed 80384 entities         [yente.search.indexer] added=80384 deleted=0 modified=0
+marble-yente     | 2025-03-22T20:21:49.205437Z [info     ] Index is now aliased to: yente-entities [yente.search.indexer] index=yente-entities-us_sanctions-011030712-20250322182715-ehh
+marble-yente     | 2025-03-22T20:21:50.714287Z [info     ] Index update complete.         [yente.search.indexer]
+marble-api       | 2025-03-22T20:21:53Z INFO GET /liveness status=200 latency=195 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api-cron  | 2025/03/22 20:22:01 [tasker] running 2 due tasks
+marble-api-cron  | 2025/03/22 20:22:01 [tasker] task [* * * * *][#1] running
+marble-api-cron  | 2025/03/22 20:22:01 [tasker] task [* * * * *][#2] running
+marble-api-cron  | 2025/03/22 20:22:01 [tasker] next tick on 2025/03/22 21:23:00
+marble-api-cron  | 2025-03-22T20:22:01Z INFO Start job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:22:01Z INFO Start job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:22:01Z INFO Start ingesting data from upload logs job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:22:01Z INFO Done scheduling all due scenarios job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:22:01Z INFO Found 0 upload logs of data to ingest job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:22:01Z INFO Done executing job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025/03/22 20:22:01 [tasker] task [* * * * *][#2] ran successfully
+marble-api-cron  | 2025-03-22T20:22:01Z INFO Found 0 pending scheduled executions job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:22:01Z INFO Done executing job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025/03/22 20:22:01 [tasker] task [* * * * *][#1] ran successfully
+marble-api       | 2025-03-22T20:22:04Z INFO GET /liveness status=200 latency=1 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:22:14Z INFO GET /liveness status=200 latency=2 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-postgres  | 2025-03-22 20:22:17.089 UTC [63] LOG:  checkpoint starting: time
+marble-api       | 2025-03-22T20:22:24Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:22:34Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:22:44Z INFO GET /liveness status=200 latency=1 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:22:54Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api-cron  | 2025/03/22 20:23:00 [tasker] running 2 due tasks
+marble-api-cron  | 2025/03/22 20:23:00 [tasker] next tick on 2025/03/22 21:24:00
+marble-api-cron  | 2025/03/22 20:23:00 [tasker] task [* * * * *][#1] running
+marble-api-cron  | 2025-03-22T20:23:00Z INFO Start job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:23:00Z INFO Start ingesting data from upload logs job=ingest_data_from_csv
+marble-api-cron  | 2025/03/22 20:23:00 [tasker] task [* * * * *][#2] running
+marble-api-cron  | 2025-03-22T20:23:00Z INFO Start job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:23:00Z INFO Done scheduling all due scenarios job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:23:00Z INFO Found 0 pending scheduled executions job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:23:00Z INFO Done executing job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025/03/22 20:23:00 [tasker] task [* * * * *][#1] ran successfully
+marble-api-cron  | 2025-03-22T20:23:00Z INFO Found 0 upload logs of data to ingest job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:23:00Z INFO Done executing job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025/03/22 20:23:00 [tasker] task [* * * * *][#2] ran successfully
+marble-postgres  | 2025-03-22 20:23:02.225 UTC [63] LOG:  checkpoint complete: wrote 446 buffers (2.7%); 1 WAL file(s) added, 0 removed, 0 recycled; write=44.833 s, sync=0.214 s, total=45.140 s; sync files=454, longest=0.012 s, average=0.001 s; distance=3058 kB, estimate=3058 kB
+marble-api       | 2025-03-22T20:23:05Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:23:15Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:23:25Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:23:35Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:23:45Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:23:55Z INFO GET /liveness status=200 latency=1 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api-cron  | 2025-03-22T20:24:00Z INFO Start job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025/03/22 20:24:00 [tasker] running 2 due tasks
+marble-api-cron  | 2025/03/22 20:24:00 [tasker] next tick on 2025/03/22 21:25:00
+marble-api-cron  | 2025/03/22 20:24:00 [tasker] task [* * * * *][#1] running
+marble-api-cron  | 2025/03/22 20:24:00 [tasker] task [* * * * *][#2] running
+marble-api-cron  | 2025-03-22T20:24:00Z INFO Done scheduling all due scenarios job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:24:00Z INFO Start job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:24:00Z INFO Start ingesting data from upload logs job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:24:00Z INFO Found 0 upload logs of data to ingest job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:24:00Z INFO Done executing job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025/03/22 20:24:00 [tasker] task [* * * * *][#2] ran successfully
+marble-api-cron  | 2025/03/22 20:24:00 [tasker] task [* * * * *][#1] ran successfully
+marble-api-cron  | 2025-03-22T20:24:00Z INFO Found 0 pending scheduled executions job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:24:00Z INFO Done executing job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api       | 2025-03-22T20:24:06Z INFO GET /liveness status=200 latency=1 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:24:16Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:24:26Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:24:36Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:24:46Z INFO GET /liveness status=200 latency=1 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:24:57Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api-cron  | 2025-03-22T20:25:00Z INFO Start job batch-ingestion 2025-03-22T20:25:00Z INFO Start job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api-cron  | job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:25:00Z INFO Start ingesting data from upload logs job=ingest_data_from_csv
+marble-api-cron  | 2025/03/22 20:25:00 [tasker] running 2 due tasks
+marble-api-cron  | 2025/03/22 20:25:00 [tasker] next tick on 2025/03/22 21:26:00
+marble-api-cron  | 2025/03/22 20:25:00 [tasker] task [* * * * *][#2] running
+marble-api-cron  | 2025/03/22 20:25:00 [tasker] task [* * * * *][#1] running
+marble-api-cron  | 2025-03-22T20:25:00Z INFO Done scheduling all due scenarios job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:25:00Z INFO Found 0 upload logs of data to ingest job=ingest_data_from_csv
+marble-api-cron  | 2025/03/22 20:25:00 [tasker] task [* * * * *][#2] ran successfully
+marble-api-cron  | 2025-03-22T20:25:00Z INFO Done executing job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:25:00Z INFO Found 0 pending scheduled executions job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025/03/22 20:25:00 [tasker] task [* * * * *][#1] ran successfully
+marble-api-cron  | 2025-03-22T20:25:00Z INFO Done executing job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api       | 2025-03-22T20:25:07Z INFO GET /liveness status=200 latency=1 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:25:17Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:25:27Z INFO GET /liveness status=200 latency=1 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api-cron  | 2025/03/22 20:36:10 [tasker] running 2 due tasks
+marble-api-cron  | 2025/03/22 20:36:10 [tasker] next tick on 2025/03/22 21:37:00
+marble-api-cron  | 2025/03/22 20:36:10 [tasker] task [* * * * *][#1] running
+marble-api-cron  | 2025/03/22 20:36:10 [tasker] task [* * * * *][#2] running
+marble-api-cron  | 2025-03-22T20:36:10Z INFO Start job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:36:10Z INFO Start job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:36:10Z INFO Start ingesting data from upload logs job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:36:10Z INFO Found 0 upload logs of data to ingest job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:36:10Z INFO Done executing job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025/03/22 20:36:10 [tasker] task [* * * * *][#2] ran successfully
+marble-api-cron  | 2025-03-22T20:36:10Z INFO Done scheduling all due scenarios job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025/03/22 20:36:10 [tasker] task [* * * * *][#1] ran successfully
+marble-api-cron  | 2025-03-22T20:36:10Z INFO Found 0 pending scheduled executions job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:36:10Z INFO Done executing job scheduled-execution job=execute_all_scheduled_scenarios
+marble-es        | {"@timestamp":"2025-03-22T20:36:10.915Z", "log.level": "WARN", "message":"timer thread slept for [10.6m/637328ms] on absolute clock which is above the warn threshold of [5000ms]", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"elasticsearch[es][[timer]]","log.logger":"org.elasticsearch.threadpool.ThreadPool","elasticsearch.cluster.uuid":"HsUHTQGJT3ybtGsJMdmYDQ","elasticsearch.node.id":"qoc8VLpuSJ-zHoZvfLfmyg","elasticsearch.node.name":"es","elasticsearch.cluster.name":"marble-es"}
+marble-api       | 2025-03-22T20:36:16Z INFO GET /liveness status=200 latency=1 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:36:29Z INFO GET /liveness status=200 latency=4 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api-cron  | 2025-03-22T20:36:30Z INFO Starting test_run_summary job n°3 - attempt 1 job_id=3 job_kind=test_run_summary job_attempt=1 last_attempted_at=2025-03-22T20:36:29.40781Z created_at=2025-03-22T20:36:25.147Z queue=ec724652-d594-44ca-b0ce-4626dffb410d priority=1
+marble-api-cron  | 2025-03-22T20:36:30Z INFO test_run_summary job n°3 succeeded after 27.818908ms job_id=3 job_kind=test_run_summary job_attempt=1 last_attempted_at=2025-03-22T20:36:29.40781Z created_at=2025-03-22T20:36:25.147Z queue=ec724652-d594-44ca-b0ce-4626dffb410d priority=1
+marble-api       | 2025-03-22T20:36:39Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:36:50Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:37:00Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api-cron  | 2025/03/22 20:37:00 [tasker] running 2 due tasks
+marble-api-cron  | 2025/03/22 20:37:00 [tasker] next tick on 2025/03/22 21:38:00
+marble-api-cron  | 2025/03/22 20:37:00 [tasker] task [* * * * *][#1] running
+marble-api-cron  | 2025/03/22 20:37:00 [tasker] task [* * * * *][#2] running
+marble-api-cron  | 2025-03-22T20:37:00Z INFO Start job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:37:00Z INFO Start job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:37:00Z INFO Start ingesting data from upload logs job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:37:00Z INFO Done scheduling all due scenarios job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:37:00Z INFO Found 0 pending scheduled executions job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025/03/22 20:37:00 [tasker] task [* * * * *][#1] ran successfully
+marble-api-cron  | 2025-03-22T20:37:00Z INFO Done executing job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:37:00Z INFO Found 0 upload logs of data to ingest job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:37:00Z INFO Done executing job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025/03/22 20:37:00 [tasker] task [* * * * *][#2] ran successfully
+marble-api       | 2025-03-22T20:37:10Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:37:13Z WARN GET / status=401 latency=4 client_ip=172.20.0.1 method=GET path=/ data_length=0 user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" error="Error #01: validator.Validate error: token contains an invalid number of segments\n"
+marble-yente     | 2025-03-22T20:37:20.254604Z [info     ] /test-transaction              [yente] action=request agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 client_ip=172.20.0.1 code=404 method=GET path=/test-transaction query= referer=None took=0.0234830379486084 trace_context={'traceparent': '00-a033f79df5da94052102ebb3337182a7-a4406eca1f4fe0e2-00', 'tracestate': 'yente=a4406eca1f4fe0e2'}
+marble-api       | 2025-03-22T20:37:21Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-yente     | 2025-03-22T20:37:25.072951Z [info     ] /test-transaction              [yente] action=request agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 client_ip=172.20.0.1 code=404 method=GET path=/test-transaction query= referer=None took=0.00074005126953125 trace_context={'traceparent': '00-576890f78e4492b1be2493940a90e88c-bd9304215e97df79-00', 'tracestate': 'yente=bd9304215e97df79'}
+marble-api       | 2025-03-22T20:37:31Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget error=""
+marble-yente     | 2025-03-22T20:37:35.404324Z [info     ] /docs                          [yente] action=request agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 client_ip=172.20.0.1 code=404 method=GET path=/docs query= referer=None took=0.0003287792205810547 trace_context={'traceparent': '00-e18b1a82973cbbfab2df767b7316176f-9a4f65edd0420e2a-00', 'tracestate': 'yente=9a4f65edd0420e2a'}
+marble-api       | 2025-03-22T20:37:41Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:37:51Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-postgres  | 2025-03-22 20:38:00.039 UTC [63] LOG:  checkpoint starting: time
+marble-api-cron  | 2025/03/22 20:38:00 [tasker] running 2 due tasks
+marble-api-cron  | 2025/03/22 20:38:00 [tasker] next tick on 2025/03/22 21:39:00
+marble-api-cron  | 2025/03/22 20:38:00 [tasker] task [* * * * *][#1] running
+marble-api-cron  | 2025/03/22 20:38:00 [tasker] task [* * * * *][#2] running
+marble-api-cron  | 2025-03-22T20:38:00Z INFO Start job scheduled-execution 2025-03-22T20:38:00Z INFO Start job batch-ingestion job=execute_all_scheduled_scenarios
+marble-api-cron  | job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:38:00Z INFO Start ingesting data from upload logs job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:38:00Z INFO Found 0 upload logs of data to ingest job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:38:00Z INFO Done executing job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025/03/22 20:38:00 [tasker] task [* * * * *][#2] ran successfully
+marble-api-cron  | 2025-03-22T20:38:00Z INFO Done scheduling all due scenarios job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:38:00Z INFO Found 0 pending scheduled executions job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:38:00Z INFO Done executing job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025/03/22 20:38:00 [tasker] task [* * * * *][#1] ran successfully
+marble-postgres  | 2025-03-22 20:38:01.584 UTC [63] LOG:  checkpoint complete: wrote 16 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.513 s, sync=0.014 s, total=1.546 s; sync files=16, longest=0.006 s, average=0.001 s; distance=22 kB, estimate=2755 kB
+marble-api       | 2025-03-22T20:38:02Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget error=""
+marble-api       | 2025-03-22T20:38:12Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:38:22Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget error=""
+marble-api       | 2025-03-22T20:38:33Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:38:43Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget error=""
+marble-api       | 2025-03-22T20:38:53Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api-cron  | 2025/03/22 20:39:00 [tasker] running 2 due tasks
+marble-api-cron  | 2025/03/22 20:39:00 [tasker] next tick on 2025/03/22 21:40:00
+marble-api-cron  | 2025/03/22 20:39:00 [tasker] task [* * * * *][#1] running
+marble-api-cron  | 2025/03/22 20:39:00 [tasker] task [* * * * *][#2] running
+marble-api-cron  | 2025-03-22T20:39:00Z INFO Start job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:39:00Z INFO Start job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:39:00Z INFO Start ingesting data from upload logs job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:39:00Z INFO Done scheduling all due scenarios job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:39:00Z INFO Found 0 pending scheduled executions job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:39:00Z INFO Found 0 upload logs of data to ingest 2025-03-22T20:39:00Z INFO Done executing job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api-cron  | job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:39:00Z INFO Done executing job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025/03/22 20:39:00 [tasker] task [* * * * *][#1] ran successfully
+marble-api-cron  | 2025/03/22 20:39:00 [tasker] task [* * * * *][#2] ran successfully
+marble-api       | 2025-03-22T20:39:04Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:39:14Z INFO GET /liveness status=200 latency=1 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:39:24Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget error=""
+marble-api       | 2025-03-22T20:39:35Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget error=""
+marble-api       | 2025-03-22T20:39:45Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:39:55Z INFO GET /liveness status=200 latency=1 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget error=""
+marble-api-cron  | 2025/03/22 20:40:00 [tasker] running 3 due tasks
+marble-api-cron  | 2025/03/22 20:40:00 [tasker] next tick on 2025/03/22 21:41:00
+marble-api-cron  | 2025/03/22 20:40:00 [tasker] task [* * * * *][#2] running
+marble-api-cron  | 2025/03/22 20:40:00 [tasker] task [* * * * *][#1] running
+marble-api-cron  | 2025/03/22 20:40:00 [tasker] task [*/10 * * * *][#1] running
+marble-api-cron  | 2025-03-22T20:40:00Z INFO Start job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:40:00Z INFO Start job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:40:00Z INFO Start ingesting data from upload logs job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:40:00Z INFO Start job send-webhook-events job=send_webhook_events_to_convoy
+marble-api-cron  | 2025-03-22T20:40:00Z INFO Found 0 upload logs of data to ingest job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:40:00Z INFO Done executing job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025/03/22 20:40:00 [tasker] task [* * * * *][#2] ran successfully
+marble-api-cron  | 2025-03-22T20:40:00Z INFO Done scheduling all due scenarios job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025/03/22 20:40:00 [tasker] task [* * * * *][#1] ran successfully
+marble-api-cron  | 2025-03-22T20:40:00Z INFO Found 0 pending scheduled executions job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:40:00Z INFO Done executing job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025/03/22 20:40:00 [tasker] task [*/10 * * * *][#1] ran successfully
+marble-api-cron  | 2025-03-22T20:40:00Z INFO Found 0 webhook events to retry job=send_webhook_events_to_convoy
+marble-api-cron  | 2025-03-22T20:40:00Z INFO Done executing job send-webhook-events job=send_webhook_events_to_convoy
+marble-api       | 2025-03-22T20:40:06Z INFO GET /liveness status=200 latency=1 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:40:16Z INFO GET /liveness status=200 latency=2 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:40:26Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget error=""
+marble-api       | 2025-03-22T20:40:36Z INFO GET /liveness status=200 latency=1 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget error=""
+marble-api       | 2025-03-22T20:40:47Z INFO GET /liveness status=200 latency=1 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:40:57Z INFO GET /liveness status=200 latency=1 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api-cron  | 2025-03-22T20:41:01Z INFO Start job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:41:01Z INFO Start job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:41:01Z INFO Start ingesting data from upload logs job=ingest_data_from_csv
+marble-api-cron  | 2025/03/22 20:41:01 [tasker] running 2 due tasks
+marble-api-cron  | 2025/03/22 20:41:01 [tasker] next tick on 2025/03/22 21:42:00
+marble-api-cron  | 2025/03/22 20:41:01 [tasker] task [* * * * *][#1] running
+marble-api-cron  | 2025/03/22 20:41:01 [tasker] task [* * * * *][#2] running
+marble-api-cron  | 2025-03-22T20:41:01Z INFO Found 0 upload logs of data to ingest job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:41:01Z INFO Done executing job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025/03/22 20:41:01 [tasker] task [* * * * *][#2] ran successfully
+marble-api-cron  | 2025-03-22T20:41:01Z INFO Done scheduling all due scenarios job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:41:01Z INFO Found 0 pending scheduled executions job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:41:01Z INFO Done executing job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025/03/22 20:41:01 [tasker] task [* * * * *][#1] ran successfully
+marble-api       | 2025-03-22T20:41:07Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:41:17Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:41:28Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget error=""
+marble-api-cron  | 2025-03-22T20:41:32Z INFO Starting test_run_summary job n°4 - attempt 1 job_id=4 job_kind=test_run_summary job_attempt=1 last_attempted_at=2025-03-22T20:41:32.84963Z created_at=2025-03-22T20:41:32.780Z queue=ec724652-d594-44ca-b0ce-4626dffb410d priority=1
+marble-api-cron  | 2025-03-22T20:41:32Z INFO test_run_summary job n°4 succeeded after 2.423513ms job_id=4 job_kind=test_run_summary job_attempt=1 last_attempted_at=2025-03-22T20:41:32.84963Z created_at=2025-03-22T20:41:32.780Z queue=ec724652-d594-44ca-b0ce-4626dffb410d priority=1
+marble-api       | 2025-03-22T20:41:38Z INFO GET /liveness status=200 latency=1 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:41:48Z INFO GET /liveness status=200 latency=1 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:41:58Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api-cron  | 2025/03/22 20:42:00 [tasker] running 2 due tasks
+marble-api-cron  | 2025/03/22 20:42:00 [tasker] next tick on 2025/03/22 21:43:00
+marble-api-cron  | 2025/03/22 20:42:00 [tasker] task [* * * * *][#1] running
+marble-api-cron  | 2025/03/22 20:42:00 [tasker] task [* * * * *][#2] running
+marble-api-cron  | 2025-03-22T20:42:00Z INFO Start job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:42:00Z INFO Start job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:42:00Z INFO Start ingesting data from upload logs job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:42:00Z INFO Done scheduling all due scenarios job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:42:00Z INFO Found 0 upload logs of data to ingest job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:42:00Z INFO Done executing job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025/03/22 20:42:00 [tasker] task [* * * * *][#2] ran successfully
+marble-api-cron  | 2025-03-22T20:42:00Z INFO Found 0 pending scheduled executions job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:42:00Z INFO Done executing job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025/03/22 20:42:00 [tasker] task [* * * * *][#1] ran successfully
+marble-api       | 2025-03-22T20:42:09Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:42:19Z INFO GET /liveness status=200 latency=1 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:42:30Z INFO GET /liveness status=200 latency=0 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-app       | GET / 302 - - 1334.914 ms
+marble-api       | 2025-03-22T20:42:36Z INFO GET /is-sso-available status=200 latency=9 client_ip=172.20.0.8 method=GET path=/is-sso-available data_length=24 user_agent=undici
+marble-app       | GET /sign-in 200 - - 1932.014 ms
+marble-app       | GET /ressources/locales?lng=en&ns=common 200 - - 128.249 ms
+marble-app       | GET /ressources/locales?lng=en&ns=navigation 200 - - 47.721 ms
+marble-app       | GET /ressources/locales?lng=en&ns=auth 200 - - 423.931 ms
+marble-app       | GET /__manifest?p=%2Fforgot-password&p=%2Fsign-up&version=2095fef0 200 - - 73.802 ms
+marble-api       | 2025-03-22T20:42:41Z INFO GET /liveness status=200 latency=17 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api       | 2025-03-22T20:42:51Z INFO GET /liveness status=200 latency=24 client_ip=::1 method=GET path=/liveness data_length=24 user_agent=Wget
+marble-api-cron  | 2025/03/22 20:43:00 [tasker] running 2 due tasks
+marble-api-cron  | 2025/03/22 20:43:00 [tasker] next tick on 2025/03/22 21:44:00
+marble-api-cron  | 2025/03/22 20:43:00 [tasker] task [* * * * *][#1] running
+marble-api-cron  | 2025/03/22 20:43:00 [tasker] task [* * * * *][#2] running
+marble-api-cron  | 2025-03-22T20:43:00Z INFO Start job batch-ingestion 2025-03-22T20:43:00Z INFO Start job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api-cron  | job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:43:00Z INFO Start ingesting data from upload logs job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:43:00Z INFO Done scheduling all due scenarios job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:43:00Z INFO Found 0 upload logs of data to ingest job=ingest_data_from_csv
+marble-api-cron  | 2025-03-22T20:43:00Z INFO Done executing job batch-ingestion job=ingest_data_from_csv
+marble-api-cron  | 2025/03/22 20:43:00 [tasker] task [* * * * *][#2] ran successfully
+marble-api-cron  | 2025-03-22T20:43:00Z INFO Found 0 pending scheduled executions job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025-03-22T20:43:00Z INFO Done executing job scheduled-execution job=execute_all_scheduled_scenarios
+marble-api-cron  | 2025/03/22 20:43:00 [tasker] task [* * * * *][#1] ran successfully
+marble-postgres  | 2025-03-22 20:43:08.359 UTC [63] LOG:  checkpoint starting: time

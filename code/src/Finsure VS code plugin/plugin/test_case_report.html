@@ -1,0 +1,620 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Case Report</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        });
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+        h2 {
+            font-size: 20px;
+            color: #555;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        p {
+            font-size: 16px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Case Execution Report</h1>
+
+<button onclick="setTimeout(runAllTests(), 1000)" style="margin: 20px 0; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">Run All Tests</button>
+<div id="summary-table" style="display: none;">
+    <h2>Test Summary</h2>
+    <table border="1" style="border-collapse: collapse; width: 100%;">
+        <thead>
+            <tr>
+                <th style="padding: 8px; text-align: left;">Test Case</th>
+                <th style="padding: 8px; text-align: left;">Description</th>
+                <th style="padding: 8px; text-align: left;">Expected Status</th>
+                <th style="padding: 8px; text-align: left;">Result</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <td style="padding: 8px;">1</td>
+            <td style="padding: 8px;">Valid input - Standard case</td>
+            <td style="padding: 8px;">200</td>
+            <td style="padding: 8px; color: green;">PASS</td>
+        </tr>
+    
+        <tr>
+            <td style="padding: 8px;">2</td>
+            <td style="padding: 8px;">Valid input - No car, no children, no days employed, no credit score</td>
+            <td style="padding: 8px;">200</td>
+            <td style="padding: 8px; color: green;">PASS</td>
+        </tr>
+    
+        <tr>
+            <td style="padding: 8px;">3</td>
+            <td style="padding: 8px;">Valid input - High income, low debt, excellent credit</td>
+            <td style="padding: 8px;">200</td>
+            <td style="padding: 8px; color: green;">PASS</td>
+        </tr>
+    
+        <tr>
+            <td style="padding: 8px;">4</td>
+            <td style="padding: 8px;">Valid input - Low income, high debt, poor credit</td>
+            <td style="padding: 8px;">200</td>
+            <td style="padding: 8px; color: green;">PASS</td>
+        </tr>
+    
+        <tr>
+            <td style="padding: 8px;">5</td>
+            <td style="padding: 8px;">Edge case - Age close to zero</td>
+            <td style="padding: 8px;">200</td>
+            <td style="padding: 8px; color: red;">FAIL</td>
+        </tr>
+    
+        <tr>
+            <td style="padding: 8px;">6</td>
+            <td style="padding: 8px;">Edge case - Age very high</td>
+            <td style="padding: 8px;">200</td>
+            <td style="padding: 8px; color: red;">FAIL</td>
+        </tr>
+    
+        <tr>
+            <td style="padding: 8px;">7</td>
+            <td style="padding: 8px;">Edge case - Zero income</td>
+            <td style="padding: 8px;">200</td>
+            <td style="padding: 8px; color: red;">FAIL</td>
+        </tr>
+    
+        <tr>
+            <td style="padding: 8px;">8</td>
+            <td style="padding: 8px;">Edge case - Very high income</td>
+            <td style="padding: 8px;">200</td>
+            <td style="padding: 8px; color: red;">FAIL</td>
+        </tr>
+    
+        <tr>
+            <td style="padding: 8px;">9</td>
+            <td style="padding: 8px;">Invalid input - Wrong gender</td>
+            <td style="padding: 8px;">422</td>
+            <td style="padding: 8px; color: red;">FAIL</td>
+        </tr>
+    
+        <tr>
+            <td style="padding: 8px;">10</td>
+            <td style="padding: 8px;">Invalid input - Wrong data type for age</td>
+            <td style="padding: 8px;">422</td>
+            <td style="padding: 8px; color: red;">FAIL</td>
+        </tr>
+    
+        <tr>
+            <td style="padding: 8px;">11</td>
+            <td style="padding: 8px;">Invalid input - Missing required field (name)</td>
+            <td style="padding: 8px;">422</td>
+            <td style="padding: 8px; color: red;">FAIL</td>
+        </tr>
+    
+        <tr>
+            <td style="padding: 8px;">12</td>
+            <td style="padding: 8px;">Invalid input - credit_limit_used(%) out of range</td>
+            <td style="padding: 8px;">422</td>
+            <td style="padding: 8px; color: red;">FAIL</td>
+        </tr>
+    
+        <tr>
+            <td style="padding: 8px;">13</td>
+            <td style="padding: 8px;">Valid input - owns_car is null</td>
+            <td style="padding: 8px;">200</td>
+            <td style="padding: 8px; color: green;">PASS</td>
+        </tr>
+    
+        <tr>
+            <td style="padding: 8px;">14</td>
+            <td style="padding: 8px;">Valid input - no_of_children is null</td>
+            <td style="padding: 8px;">200</td>
+            <td style="padding: 8px; color: green;">PASS</td>
+        </tr>
+    
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function runAllTests() {
+        const summaryTable = document.getElementById("summary-table");
+        if (summaryTable) {
+            summaryTable.style.display = "block";
+        }
+    }
+</script>
+
+    <h2>Valid input - Standard case</h2>
+    <pre><code class="language-json">{
+    "customer_id": "cust123",
+    "name": "John Doe",
+    "age": 35,
+    "gender": "M",
+    "owns_car": "Y",
+    "owns_house": "Y",
+    "no_of_children": 2.0,
+    "net_yearly_income": 60000.0,
+    "no_of_days_employed": 3650.0,
+    "occupation_type": "Sales staff",
+    "total_family_members": 4.0,
+    "migrant_worker": 0.0,
+    "yearly_debt_payments": 10000.0,
+    "credit_limit": 100000.0,
+    "credit_limit_used(%)": 50,
+    "credit_score": 700.0,
+    "prev_defaults": 0,
+    "default_in_last_6months": 0
+}</code></pre>
+    <p><strong>Possible Failure Cause:</strong> Model predicts default when it shouldn't, or vice versa. Data preprocessing errors.</p>
+    <h3>Expected Output:</h3>
+    <pre><code class="language-json">{
+    "prediction": 0
+}</code></pre>
+    <button onclick="runTest(0)">Run Test</button>
+    <div id="response-container-0" style="display: none;">
+        <h3 id="status-0"><strong>Status:</strong> <span style="color: green;">PASS</span></h3>
+        <h3>API Response:</h3>
+        <pre><code class="language-json" id="response-0">{
+    "prediction": 0
+}</code></pre>
+    </div>
+    <hr>
+    
+    <h2>Valid input - No car, no children, no days employed, no credit score</h2>
+    <pre><code class="language-json">{
+    "customer_id": "cust456",
+    "name": "Jane Smith",
+    "age": 28,
+    "gender": "F",
+    "owns_house": "Y",
+    "net_yearly_income": 45000.0,
+    "occupation_type": "Accountant",
+    "yearly_debt_payments": 5000.0,
+    "credit_limit": 50000.0,
+    "credit_limit_used(%)": 20,
+    "prev_defaults": 0,
+    "default_in_last_6months": 0
+}</code></pre>
+    <p><strong>Possible Failure Cause:</strong> Model not handling missing optional fields correctly. Data preprocessing errors.</p>
+    <h3>Expected Output:</h3>
+    <pre><code class="language-json">{
+    "prediction": 0
+}</code></pre>
+    <button onclick="runTest(1)">Run Test</button>
+    <div id="response-container-1" style="display: none;">
+        <h3 id="status-1"><strong>Status:</strong> <span style="color: green;">PASS</span></h3>
+        <h3>API Response:</h3>
+        <pre><code class="language-json" id="response-1">{
+    "prediction": 0
+}</code></pre>
+    </div>
+    <hr>
+    
+    <h2>Valid input - High income, low debt, excellent credit</h2>
+    <pre><code class="language-json">{
+    "customer_id": "cust789",
+    "name": "Peter Jones",
+    "age": 45,
+    "gender": "M",
+    "owns_car": "Y",
+    "owns_house": "Y",
+    "no_of_children": 1.0,
+    "net_yearly_income": 150000.0,
+    "no_of_days_employed": 7300.0,
+    "occupation_type": "Manager",
+    "total_family_members": 3.0,
+    "migrant_worker": 0.0,
+    "yearly_debt_payments": 2000.0,
+    "credit_limit": 500000.0,
+    "credit_limit_used(%)": 5,
+    "credit_score": 800.0,
+    "prev_defaults": 0,
+    "default_in_last_6months": 0
+}</code></pre>
+    <p><strong>Possible Failure Cause:</strong> Model incorrectly predicts default for a low-risk individual.</p>
+    <h3>Expected Output:</h3>
+    <pre><code class="language-json">{
+    "prediction": 0
+}</code></pre>
+    <button onclick="runTest(2)">Run Test</button>
+    <div id="response-container-2" style="display: none;">
+        <h3 id="status-2"><strong>Status:</strong> <span style="color: green;">PASS</span></h3>
+        <h3>API Response:</h3>
+        <pre><code class="language-json" id="response-2">{
+    "prediction": 0
+}</code></pre>
+    </div>
+    <hr>
+    
+    <h2>Valid input - Low income, high debt, poor credit</h2>
+    <pre><code class="language-json">{
+    "customer_id": "cust012",
+    "name": "Mary Brown",
+    "age": 25,
+    "gender": "F",
+    "owns_car": "N",
+    "owns_house": "N",
+    "no_of_children": 0.0,
+    "net_yearly_income": 25000.0,
+    "no_of_days_employed": 365.0,
+    "occupation_type": "Laborer",
+    "total_family_members": 2.0,
+    "migrant_worker": 1.0,
+    "yearly_debt_payments": 15000.0,
+    "credit_limit": 10000.0,
+    "credit_limit_used(%)": 90,
+    "credit_score": 500.0,
+    "prev_defaults": 1,
+    "default_in_last_6months": 1
+}</code></pre>
+    <p><strong>Possible Failure Cause:</strong> Model incorrectly predicts no default for a high-risk individual.</p>
+    <h3>Expected Output:</h3>
+    <pre><code class="language-json">{
+    "prediction": 1
+}</code></pre>
+    <button onclick="runTest(3)">Run Test</button>
+    <div id="response-container-3" style="display: none;">
+        <h3 id="status-3"><strong>Status:</strong> <span style="color: green;">PASS</span></h3>
+        <h3>API Response:</h3>
+        <pre><code class="language-json" id="response-3">{
+    "prediction": 1
+}</code></pre>
+    </div>
+    <hr>
+    
+    <h2>Edge case - Age close to zero</h2>
+    <pre><code class="language-json">{
+    "customer_id": "cust345",
+    "name": "Baby Doe",
+    "age": 1,
+    "gender": "M",
+    "owns_house": "N",
+    "net_yearly_income": 1000.0,
+    "occupation_type": "Unemployed",
+    "credit_limit": 100.0,
+    "credit_limit_used(%)": 10,
+    "prev_defaults": 0,
+    "default_in_last_6months": 0
+}</code></pre>
+    <p><strong>Possible Failure Cause:</strong> Model not handling very young age correctly. Data preprocessing errors.</p>
+    <h3>Expected Output:</h3>
+    <pre><code class="language-json">{
+    "prediction": 1
+}</code></pre>
+    <button onclick="runTest(4)">Run Test</button>
+    <div id="response-container-4" style="display: none;">
+        <h3 id="status-4"><strong>Status:</strong> <span style="color: red;">FAIL</span></h3>
+        <h3>API Response:</h3>
+        <pre><code class="language-json" id="response-4">""</code></pre>
+    </div>
+    <hr>
+    
+    <h2>Edge case - Age very high</h2>
+    <pre><code class="language-json">{
+    "customer_id": "cust678",
+    "name": "Old Man",
+    "age": 100,
+    "gender": "M",
+    "owns_house": "Y",
+    "net_yearly_income": 100000.0,
+    "occupation_type": "Pensioner",
+    "credit_limit": 100000.0,
+    "credit_limit_used(%)": 5,
+    "prev_defaults": 0,
+    "default_in_last_6months": 0
+}</code></pre>
+    <p><strong>Possible Failure Cause:</strong> Model not handling very old age correctly. Data preprocessing errors.</p>
+    <h3>Expected Output:</h3>
+    <pre><code class="language-json">{
+    "prediction": 0
+}</code></pre>
+    <button onclick="runTest(5)">Run Test</button>
+    <div id="response-container-5" style="display: none;">
+        <h3 id="status-5"><strong>Status:</strong> <span style="color: red;">FAIL</span></h3>
+        <h3>API Response:</h3>
+        <pre><code class="language-json" id="response-5">""</code></pre>
+    </div>
+    <hr>
+    
+    <h2>Edge case - Zero income</h2>
+    <pre><code class="language-json">{
+    "customer_id": "cust901",
+    "name": "No Income",
+    "age": 30,
+    "gender": "F",
+    "owns_house": "N",
+    "net_yearly_income": 0.0,
+    "occupation_type": "Unemployed",
+    "credit_limit": 1000.0,
+    "credit_limit_used(%)": 99,
+    "prev_defaults": 1,
+    "default_in_last_6months": 1
+}</code></pre>
+    <p><strong>Possible Failure Cause:</strong> Model not handling zero income correctly. Data preprocessing errors.</p>
+    <h3>Expected Output:</h3>
+    <pre><code class="language-json">{
+    "prediction": 1
+}</code></pre>
+    <button onclick="runTest(6)">Run Test</button>
+    <div id="response-container-6" style="display: none;">
+        <h3 id="status-6"><strong>Status:</strong> <span style="color: red;">FAIL</span></h3>
+        <h3>API Response:</h3>
+        <pre><code class="language-json" id="response-6">""</code></pre>
+    </div>
+    <hr>
+    
+    <h2>Edge case - Very high income</h2>
+    <pre><code class="language-json">{
+    "customer_id": "cust234",
+    "name": "Rich Guy",
+    "age": 40,
+    "gender": "M",
+    "owns_house": "Y",
+    "net_yearly_income": 1000000.0,
+    "occupation_type": "Manager",
+    "credit_limit": 1000000.0,
+    "credit_limit_used(%)": 1,
+    "prev_defaults": 0,
+    "default_in_last_6months": 0
+}</code></pre>
+    <p><strong>Possible Failure Cause:</strong> Model not handling very high income correctly. Data preprocessing errors.</p>
+    <h3>Expected Output:</h3>
+    <pre><code class="language-json">{
+    "prediction": 0
+}</code></pre>
+    <button onclick="runTest(7)">Run Test</button>
+    <div id="response-container-7" style="display: none;">
+        <h3 id="status-7"><strong>Status:</strong> <span style="color: red;">FAIL</span></h3>
+        <h3>API Response:</h3>
+        <pre><code class="language-json" id="response-7">""</code></pre>
+    </div>
+    <hr>
+    
+    <h2>Invalid input - Wrong gender</h2>
+    <pre><code class="language-json">{
+    "customer_id": "cust567",
+    "name": "Invalid Gender",
+    "age": 30,
+    "gender": "X",
+    "owns_house": "Y",
+    "net_yearly_income": 50000.0,
+    "occupation_type": "Sales staff",
+    "credit_limit": 50000.0,
+    "credit_limit_used(%)": 50,
+    "prev_defaults": 0,
+    "default_in_last_6months": 0
+}</code></pre>
+    <p><strong>Possible Failure Cause:</strong> Validation not working correctly. API does not return appropriate error message.</p>
+    <h3>Expected Output:</h3>
+    <pre><code class="language-json">{
+    "detail": [
+        {
+            "loc": [
+                "body",
+                "gender"
+            ],
+            "msg": "value is not a valid enumeration member; permitted: 'M', 'F'",
+            "type": "value_error.enum"
+        }
+    ]
+}</code></pre>
+    <button onclick="runTest(8)">Run Test</button>
+    <div id="response-container-8" style="display: none;">
+        <h3 id="status-8"><strong>Status:</strong> <span style="color: red;">FAIL</span></h3>
+        <h3>API Response:</h3>
+        <pre><code class="language-json" id="response-8">""</code></pre>
+    </div>
+    <hr>
+    
+    <h2>Invalid input - Wrong data type for age</h2>
+    <pre><code class="language-json">{
+    "customer_id": "cust890",
+    "name": "Invalid Age",
+    "age": "thirty",
+    "gender": "M",
+    "owns_house": "Y",
+    "net_yearly_income": 50000.0,
+    "occupation_type": "Sales staff",
+    "credit_limit": 50000.0,
+    "credit_limit_used(%)": 50,
+    "prev_defaults": 0,
+    "default_in_last_6months": 0
+}</code></pre>
+    <p><strong>Possible Failure Cause:</strong> Validation not working correctly. API does not return appropriate error message.</p>
+    <h3>Expected Output:</h3>
+    <pre><code class="language-json">{
+    "detail": [
+        {
+            "loc": [
+                "body",
+                "age"
+            ],
+            "msg": "value is not a valid integer",
+            "type": "type_error.integer"
+        }
+    ]
+}</code></pre>
+    <button onclick="runTest(9)">Run Test</button>
+    <div id="response-container-9" style="display: none;">
+        <h3 id="status-9"><strong>Status:</strong> <span style="color: red;">FAIL</span></h3>
+        <h3>API Response:</h3>
+        <pre><code class="language-json" id="response-9">""</code></pre>
+    </div>
+    <hr>
+    
+    <h2>Invalid input - Missing required field (name)</h2>
+    <pre><code class="language-json">{
+    "customer_id": "cust112",
+    "age": 30,
+    "gender": "M",
+    "owns_house": "Y",
+    "net_yearly_income": 50000.0,
+    "occupation_type": "Sales staff",
+    "credit_limit": 50000.0,
+    "credit_limit_used(%)": 50,
+    "prev_defaults": 0,
+    "default_in_last_6months": 0
+}</code></pre>
+    <p><strong>Possible Failure Cause:</strong> Validation not working correctly. API does not return appropriate error message.</p>
+    <h3>Expected Output:</h3>
+    <pre><code class="language-json">{
+    "detail": [
+        {
+            "loc": [
+                "body",
+                "name"
+            ],
+            "msg": "field required",
+            "type": "value_error.missing"
+        }
+    ]
+}</code></pre>
+    <button onclick="runTest(10)">Run Test</button>
+    <div id="response-container-10" style="display: none;">
+        <h3 id="status-10"><strong>Status:</strong> <span style="color: red;">FAIL</span></h3>
+        <h3>API Response:</h3>
+        <pre><code class="language-json" id="response-10">""</code></pre>
+    </div>
+    <hr>
+    
+    <h2>Invalid input - credit_limit_used(%) out of range</h2>
+    <pre><code class="language-json">{
+    "customer_id": "cust113",
+    "name": "Test User",
+    "age": 30,
+    "gender": "M",
+    "owns_house": "Y",
+    "net_yearly_income": 50000.0,
+    "occupation_type": "Sales staff",
+    "credit_limit": 50000.0,
+    "credit_limit_used(%)": 101,
+    "prev_defaults": 0,
+    "default_in_last_6months": 0
+}</code></pre>
+    <p><strong>Possible Failure Cause:</strong> Validation not working correctly. API does not return appropriate error message.</p>
+    <h3>Expected Output:</h3>
+    <pre><code class="language-json">{
+    "detail": [
+        {
+            "loc": [
+                "body",
+                "credit_limit_used(%)"
+            ],
+            "msg": "ensure this value is less than or equal to 100",
+            "type": "value_error.number.not_le"
+        }
+    ]
+}</code></pre>
+    <button onclick="runTest(11)">Run Test</button>
+    <div id="response-container-11" style="display: none;">
+        <h3 id="status-11"><strong>Status:</strong> <span style="color: red;">FAIL</span></h3>
+        <h3>API Response:</h3>
+        <pre><code class="language-json" id="response-11">""</code></pre>
+    </div>
+    <hr>
+    
+    <h2>Valid input - owns_car is null</h2>
+    <pre><code class="language-json">{
+    "customer_id": "cust114",
+    "name": "Test User",
+    "age": 30,
+    "gender": "M",
+    "owns_house": "Y",
+    "net_yearly_income": 50000.0,
+    "occupation_type": "Sales staff",
+    "credit_limit": 50000.0,
+    "credit_limit_used(%)": 50,
+    "prev_defaults": 0,
+    "default_in_last_6months": 0
+}</code></pre>
+    <p><strong>Possible Failure Cause:</strong> Model not handling missing optional fields correctly. Data preprocessing errors.</p>
+    <h3>Expected Output:</h3>
+    <pre><code class="language-json">{
+    "prediction": 0
+}</code></pre>
+    <button onclick="runTest(12)">Run Test</button>
+    <div id="response-container-12" style="display: none;">
+        <h3 id="status-12"><strong>Status:</strong> <span style="color: green;">PASS</span></h3>
+        <h3>API Response:</h3>
+        <pre><code class="language-json" id="response-12">{
+    "prediction": 0
+}</code></pre>
+    </div>
+    <hr>
+    
+    <h2>Valid input - no_of_children is null</h2>
+    <pre><code class="language-json">{
+    "customer_id": "cust115",
+    "name": "Test User",
+    "age": 30,
+    "gender": "M",
+    "owns_house": "Y",
+    "net_yearly_income": 50000.0,
+    "occupation_type": "Sales staff",
+    "credit_limit": 50000.0,
+    "credit_limit_used(%)": 50,
+    "prev_defaults": 0,
+    "default_in_last_6months": 0
+}</code></pre>
+    <p><strong>Possible Failure Cause:</strong> Model not handling missing optional fields correctly. Data preprocessing errors.</p>
+    <h3>Expected Output:</h3>
+    <pre><code class="language-json">{
+    "prediction": 0
+}</code></pre>
+    <button onclick="runTest(13)">Run Test</button>
+    <div id="response-container-13" style="display: none;">
+        <h3 id="status-13"><strong>Status:</strong> <span style="color: green;">PASS</span></h3>
+        <h3>API Response:</h3>
+        <pre><code class="language-json" id="response-13">{
+    "prediction": 0
+}</code></pre>
+    </div>
+    <hr>
+    
+</body>
+</html>

@@ -1,0 +1,131 @@
+{
+    "test_cases": [
+        {
+            "id": 1,
+            "scenario": "Valid SWIFT ISO 20022 pacs.008 Credit Transfer",
+            "input_data": {
+                "msg_id": "pacs.008-12345",
+                "creditor": {
+                    "name": "Acme Corp",
+                    "account": "DE89370400440532013000"
+                },
+                "debtor": {
+                    "name": "XYZ Inc",
+                    "account": "FR1420041010050500013M02606"
+                },
+                "amount": 1000.0,
+                "currency": "EUR",
+                "instr_id": "INST12345"
+            },
+            "expected_output": {
+                "status": "success",
+                "message": "Payment processed successfully"
+            }
+        },
+        {
+            "id": 2,
+            "scenario": "Invalid SWIFT ISO 20022 pacs.008 - Missing Debtor Account",
+            "input_data": {
+                "msg_id": "pacs.008-67890",
+                "creditor": {
+                    "name": "Acme Corp",
+                    "account": "DE89370400440532013000"
+                },
+                "debtor": {
+                    "name": "XYZ Inc"
+                },
+                "amount": 500.0,
+                "currency": "EUR",
+                "instr_id": "INST67890"
+            },
+            "expected_output": {
+                "status": "error",
+                "error": "Missing mandatory Debtor Account"
+            }
+        },
+        {
+            "id": 3,
+            "scenario": "FEDWIRE Successful Payment",
+            "input_data": {
+                "routing_number": "021000021",
+                "account_number": "1234567890",
+                "amount": 15000.0,
+                "currency": "USD"
+            },
+            "expected_output": {
+                "status": "success",
+                "confirmation_number": "FED1234567890"
+            }
+        },
+        {
+            "id": 4,
+            "scenario": "FEDWIRE Payment - Insufficient Funds",
+            "input_data": {
+                "routing_number": "021000021",
+                "account_number": "9876543210",
+                "amount": 2000000.0,
+                "currency": "USD"
+            },
+            "expected_output": {
+                "status": "error",
+                "error": "Insufficient Funds"
+            }
+        },
+        {
+            "id": 5,
+            "scenario": "CHIPS Payment - Valid Transaction",
+            "input_data": {
+                "chip_id": "CHIP0001",
+                "sender": "Bank A",
+                "receiver": "Bank B",
+                "amount": 50000.0,
+                "currency": "USD"
+            },
+            "expected_output": {
+                "status": "success",
+                "transaction_id": "CHIPS12345"
+            }
+        },
+        {
+            "id": 6,
+            "scenario": "CHIPS Transaction - Fraud Detection - Large Amount Discrepancy",
+            "input_data": {
+                "chip_id": "CHIP0002",
+                "sender": "Bank C",
+                "receiver": "Bank D",
+                "amount": 10000000.0,
+                "currency": "USD",
+                "previous_transactions": [
+                    {
+                        "amount": 100.0
+                    },
+                    {
+                        "amount": 150.0
+                    },
+                    {
+                        "amount": 200.0
+                    }
+                ]
+            },
+            "expected_output": {
+                "status": "error",
+                "error": "Potential Fraud Detected: Unusual transaction amount"
+            }
+        },
+        {
+            "id": 7,
+            "scenario": "CHIPS Payment - Invalid Receiver Account",
+            "input_data": {
+                "chip_id": "CHIP0003",
+                "sender": "Bank E",
+                "receiver": "Invalid Bank",
+                "amount": 75000.0,
+                "currency": "USD"
+            },
+            "expected_output": {
+                "status": "error",
+                "error": "Invalid Receiver Account"
+            }
+        }
+    ]
+}

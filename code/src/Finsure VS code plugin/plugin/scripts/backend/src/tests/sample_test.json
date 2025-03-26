@@ -1,0 +1,111 @@
+{
+    "test_cases": [
+        {
+            "id": 1,
+            "scenario": "Valid SWIFT ISO 20022 pacs.008 Transaction",
+            "input_data": {
+                "msg_type": "pacs.008",
+                "creditor": {
+                    "name": "Test Creditor",
+                    "account": "DE89370400440532013000"
+                },
+                "debtor": {
+                    "name": "Test Debtor",
+                    "account": "FR1420041010050500013M02606"
+                },
+                "amount": 1000.0,
+                "currency": "EUR",
+                "end_to_end_id": "e2e-1234567890"
+            },
+            "expected_output": {
+                "status": "Accepted",
+                "transaction_id": "xyz-9876543210"
+            },
+            "status": "pass"
+        },
+        {
+            "id": 2,
+            "scenario": "Invalid SWIFT ISO 20022 pacs.008 Transaction (Missing Creditor Account)",
+            "input_data": {
+                "msg_type": "pacs.008",
+                "creditor": {
+                    "name": "Test Creditor"
+                },
+                "debtor": {
+                    "name": "Test Debtor",
+                    "account": "FR1420041010050500013M02606"
+                },
+                "amount": 1000.0,
+                "currency": "EUR"
+            },
+            "expected_output": {
+                "status": "Rejected",
+                "error_code": "MISSING_CREDITOR_ACCOUNT"
+            },
+            "status": "pass"
+        },
+        {
+            "id": 3,
+            "scenario": "Successful FED Payment",
+            "input_data": {
+                "payment_type": "FEDWIRE",
+                "routing_number": "021000021",
+                "account_number": "1234567890",
+                "amount": 5000.0,
+                "currency": "USD"
+            },
+            "expected_output": {
+                "status": "Completed",
+                "confirmation_number": "FED-12345"
+            },
+            "status": "pass"
+        },
+        {
+            "id": 4,
+            "scenario": "Rejected FED Payment (Insufficient Funds)",
+            "input_data": {
+                "payment_type": "FEDWIRE",
+                "routing_number": "021000021",
+                "account_number": "1234567890",
+                "amount": 10000000.0,
+                "currency": "USD"
+            },
+            "expected_output": {
+                "status": "Rejected",
+                "error_code": "INSUFFICIENT_FUNDS"
+            },
+            "status": "pass"
+        },
+        {
+            "id": 5,
+            "scenario": "Successful CHIPS Payment",
+            "input_data": {
+                "payment_type": "CHIPS",
+                "chip_id": "1234567890",
+                "amount": 2500.0,
+                "currency": "USD"
+            },
+            "expected_output": {
+                "status": "Completed",
+                "transaction_id": "CHIPS-98765"
+            },
+            "status": "pass"
+        },
+        {
+            "id": 6,
+            "scenario": "CHIPS Payment - Fraud Detection Triggered",
+            "input_data": {
+                "payment_type": "CHIPS",
+                "chip_id": "9876543210",
+                "amount": 500000.0,
+                "currency": "USD",
+                "destination_country": "High Risk Country"
+            },
+            "expected_output": {
+                "status": "Pending Review",
+                "reason": "Potential Fraud Detected"
+            },
+            "status": "pass"
+        }
+    ]
+}

@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1,
+        "scenario": "Valid SWIFT ISO 20022 Transaction - CHIPS Settlement",
+        "status": "pass",
+        "expected_output": {
+            "status": "success",
+            "message": "Transaction processed successfully through CHIPS"
+        },
+        "actual_response": {
+            "status": "success",
+            "approval_url": "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-0VK042082W5423933"
+        }
+    },
+    {
+        "id": 2,
+        "scenario": "Invalid SWIFT ISO 20022 Transaction - Missing Amount",
+        "status": "fail",
+        "expected_output": {
+            "status": "error",
+            "error": "Missing or invalid IntrBkSttlmAmt element"
+        },
+        "actual_response": {
+            "status": "success",
+            "approval_url": "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-25043474K49752157"
+        }
+    },
+    {
+        "id": 3,
+        "scenario": "FEDWIRE Payment - Successful",
+        "status": "pass",
+        "expected_output": {
+            "status": "success",
+            "message": "FEDWIRE payment successful"
+        },
+        "actual_response": {
+            "status": "success",
+            "approval_url": "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7R69933358199564V"
+        }
+    },
+    {
+        "id": 4,
+        "scenario": "FEDWIRE Payment - Rejected - Invalid ABA Routing Number",
+        "status": "fail",
+        "expected_output": {
+            "status": "error",
+            "error": "Invalid ABA routing number"
+        },
+        "actual_response": {
+            "status": "success",
+            "approval_url": "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-8NX14054RM542600G"
+        }
+    },
+    {
+        "id": 5,
+        "scenario": "CHIPS Transaction - Fraudulent Activity Detected",
+        "status": "fail",
+        "expected_output": {
+            "status": "error",
+            "error": "Fraudulent activity detected. Transaction rejected."
+        },
+        "actual_response": {
+            "status": "success",
+            "approval_url": "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-38K73751PV114404P"
+        }
+    },
+    {
+        "id": 6,
+        "scenario": "CHIPS Transaction - Payment Validation Successful",
+        "status": "pass",
+        "expected_output": {
+            "status": "success",
+            "message": "CHIPS payment validated successfully"
+        },
+        "actual_response": {
+            "status": "success",
+            "approval_url": "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-72E44435CD118305S"
+        }
+    }
+]

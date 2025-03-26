@@ -1,0 +1,58 @@
+[
+    {
+        "scenario": "SWIFT MT103 Mandatory Field Validation",
+        "input_data": "{1:F01BANKUS33AXXX0000000000}{2:I103BANKGB22XXXXN}{3:{108:ILOVEISO20022}}{4:\n:20:TR12345678\n:23B:CRED\n:32A:250323USD15000,\n:50K:/1234567890\nJOHN DOE\n123 MAIN ST\nNEW YORK, NY\n:59:/0987654321\nABC CORP\n456 LONDON BRIDGE\nUK\n:71A:OUR\n-}",
+        "expected_output": {
+            "valid": false,
+            "errors": [
+                "Field 20 (Transaction Reference Number) format valid, but should be unique.",
+                "Field 50K (Ordering Customer) format valid, but additional validation may be needed based on institution specific rules.",
+                "Field 59 (Beneficiary Customer) format valid, but additional validation may be needed based on institution specific rules.",
+                "Field 108 (Message User Reference (MUR)) should not be used in MT103.  Consider using user headers."
+            ]
+        },
+        "status": "Ready"
+    },
+    {
+        "scenario": "SWIFT MT103 Field 32A Validation - Valid Date",
+        "input_data": "{1:F01BANKUS33AXXX0000000000}{2:I103BANKGB22XXXXN}{4:\n:20:TR1234567890\n:23B:CRED\n:32A:230325USD15000,\n:50K:/1234567890\nJOHN DOE\n:59:/0987654321\nABC CORP\n:71A:OUR\n-}",
+        "expected_output": {
+            "valid": true,
+            "errors": []
+        },
+        "status": "Ready"
+    },
+    {
+        "scenario": "SWIFT MT103 Field 32A Validation - Invalid Date",
+        "input_data": "{1:F01BANKUS33AXXX0000000000}{2:I103BANKGB22XXXXN}{4:\n:20:TR1234567890\n:23B:CRED\n:32A:251323USD15000,\n:50K:/1234567890\nJOHN DOE\n:59:/0987654321\nABC CORP\n:71A:OUR\n-}",
+        "expected_output": {
+            "valid": false,
+            "errors": [
+                "Field 32A (Value Date, Currency Code, Amount) has invalid date format.  Should be YYMMDD."
+            ]
+        },
+        "status": "Ready"
+    },
+    {
+        "scenario": "FEDWIRE Tag Validation",
+        "input_data": "{1:F01BANKUS33AXXX0000000000}{2:I103BANKGB22XXXXN}{4:\n:20:TR12345678\n:23B:CRED\n:32A:250323USD15000,\n:50K:/1234567890\nJOHN DOE\n123 MAIN ST\nNEW YORK, NY\n:59:/0987654321\nABC CORP\n456 LONDON BRIDGE\nUK\n:71A:OUR\n-}",
+        "expected_output": {
+            "valid": false,
+            "errors": [
+                "Input data appears to be SWIFT MT format, not FEDWIRE."
+            ]
+        },
+        "status": "Ready"
+    },
+    {
+        "scenario": "CHIPS Tag Validation",
+        "input_data": "{1:F01BANKUS33AXXX0000000000}{2:I103BANKGB22XXXXN}{4:\n:20:TR12345678\n:23B:CRED\n:32A:250323USD15000,\n:50K:/1234567890\nJOHN DOE\n123 MAIN ST\nNEW YORK, NY\n:59:/0987654321\nABC CORP\n456 LONDON BRIDGE\nUK\n:71A:OUR\n-}",
+        "expected_output": {
+            "valid": false,
+            "errors": [
+                "Input data appears to be SWIFT MT format, not CHIPS."
+            ]
+        },
+        "status": "Ready"
+    }
+]

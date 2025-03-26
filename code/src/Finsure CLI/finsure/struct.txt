@@ -1,0 +1,53 @@
+.
+├── CODE_OF_CONDUCT.rst
+├── CONTRIBUTING.rst
+├── HISTORY.rst
+├── MANIFEST.in
+├── Makefile
+├── README.rst
+├── build
+│   ├── bdist.macosx-11.1-arm64
+│   └── lib
+│       └── finsure
+├── docs
+│   ├── Makefile
+│   ├── conf.py
+│   ├── contributing.rst
+│   ├── history.rst
+│   ├── index.rst
+│   ├── installation.rst
+│   ├── make.bat
+│   ├── readme.rst
+│   └── usage.rst
+├── generated_test.html
+├── generated_testcases.txt
+├── pyproject.toml
+├── requirements_dev.txt
+├── ruff.toml
+├── src
+│   ├── finsure
+│   │   ├── CICD.py
+│   │   ├── Chat_agent_test.py
+│   │   ├── __init__.py
+│   │   ├── browser_automation.py
+│   │   ├── cli.py
+│   │   ├── compliance.py
+│   │   ├── generate_testcases.py
+│   │   ├── payment.py
+│   │   ├── payments-testing
+│   │   ├── regulatory_compliance.py
+│   │   └── ui_testing.py
+│   └── finsure.egg-info
+│       ├── PKG-INFO
+│       ├── SOURCES.txt
+│       ├── dependency_links.txt
+│       ├── entry_points.txt
+│       ├── requires.txt
+│       └── top_level.txt
+├── struct.txt
+├── tests
+│   ├── __init__.py
+│   └── test_finsure.py
+└── tox.ini
+
+11 directories, 40 files

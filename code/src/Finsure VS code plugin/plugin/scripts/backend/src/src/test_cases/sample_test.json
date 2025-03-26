@@ -1,0 +1,100 @@
+{
+    "test_cases": [
+        {
+            "id": 1,
+            "scenario": "Valid SWIFT ISO 20022 pacs.008 Credit Transfer",
+            "input_data": {
+                "msg_type": "pacs.008",
+                "creditor_account": "DE89370400440532013000",
+                "debtor_account": "FR1420041010050500013M02606",
+                "amount": 1000.5,
+                "currency": "EUR",
+                "end_to_end_id": "e2e-1234567890"
+            },
+            "expected_output": {
+                "status": "ACSP",
+                "reason_code": null
+            },
+            "status": "pass"
+        },
+        {
+            "id": 2,
+            "scenario": "Invalid SWIFT ISO 20022 pacs.008 - Missing Creditor Account",
+            "input_data": {
+                "msg_type": "pacs.008",
+                "debtor_account": "FR1420041010050500013M02606",
+                "amount": 1000.5,
+                "currency": "EUR"
+            },
+            "expected_output": {
+                "status": "RJCT",
+                "reason_code": "CRED_ACC_MISSING"
+            },
+            "status": "pass"
+        },
+        {
+            "id": 3,
+            "scenario": "FED Compliance - Successful Payment",
+            "input_data": {
+                "payment_type": "FEDWIRE",
+                "routing_number": "021000021",
+                "account_number": "1234567890",
+                "amount": 5000,
+                "beneficiary_name": "Test Beneficiary"
+            },
+            "expected_output": {
+                "status": "COMPLETED",
+                "fed_confirmation_number": "123456789012"
+            },
+            "status": "pass"
+        },
+        {
+            "id": 4,
+            "scenario": "FED Compliance - Rejected Payment - Insufficient Funds",
+            "input_data": {
+                "payment_type": "FEDWIRE",
+                "routing_number": "021000021",
+                "account_number": "9876543210",
+                "amount": 10000000,
+                "beneficiary_name": "Test Beneficiary"
+            },
+            "expected_output": {
+                "status": "REJECTED",
+                "reason_code": "INSUFFICIENT_FUNDS"
+            },
+            "status": "pass"
+        },
+        {
+            "id": 5,
+            "scenario": "CHIPS Transaction - Fraud Detection - High Value Transaction",
+            "input_data": {
+                "payment_type": "CHIPS",
+                "chips_id": "CHIPS12345",
+                "amount": 100000000,
+                "originator_bank": "Bank A",
+                "beneficiary_bank": "Bank B"
+            },
+            "expected_output": {
+                "status": "FLAGGED_FOR_REVIEW",
+                "reason_code": "HIGH_VALUE_TRANSACTION"
+            },
+            "status": "pass"
+        },
+        {
+            "id": 6,
+            "scenario": "CHIPS Transaction - Valid Payment",
+            "input_data": {
+                "payment_type": "CHIPS",
+                "chips_id": "CHIPS67890",
+                "amount": 10000,
+                "originator_bank": "Bank C",
+                "beneficiary_bank": "Bank D"
+            },
+            "expected_output": {
+                "status": "COMPLETED",
+                "chips_confirmation_number": "CHIPS987654321"
+            },
+            "status": "pass"
+        }
+    ]
+}

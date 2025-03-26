@@ -1,0 +1,25 @@
+{
+  "transactionId": "TXN12345678",
+  "paymentType": "SWIFT",
+  "currency": "USD",
+  "amount": 15000.00,
+  "debtor": {
+    "name": "John Doe",
+    "accountNumber": "1234567890",
+    "address": "123 Main St, New York, NY"
+  },
+  "creditor": {
+    "name": "ABC Corp",
+    "accountNumber": "0987654321",
+    "address": "456 London Bridge, UK"
+  },
+  "settlementDetails": {
+    "settlementMethod": "CHIPS",
+    "timestamp": "2025-03-23T14:25:43"
+  },
+  "compliance": {
+    "amlCheck": true,
+    "sanctionsScreening": true,
+    "fedCompliance": true
+  }
+}

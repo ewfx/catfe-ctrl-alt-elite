@@ -1,0 +1,86 @@
+{
+    "test_cases": [
+        {
+            "id": 1,
+            "scenario": "Valid SWIFT ISO 20022 Transaction - CHIPS Settlement",
+            "input_data": {
+                "xml_message": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<FIToFICustomerCreditTransferV08 xmlns=\"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08\">\n    <GrpHdr>\n        <MsgId>ABC1234567890</MsgId>\n        <CreDtTm>2025-03-23T14:25:43</CreDtTm>\n        <NbOfTxs>1</NbOfTxs>\n        <SttlmInf>\n            <SttlmMtd>CLRG</SttlmMtd>\n            <ClrSys>\n                <Cd>CHIPS</Cd>\n            </ClrSys>\n        </SttlmInf>\n    </GrpHdr>\n    <CdtTrfTxInf>\n        <PmtId>\n            <InstrId>PAY001</InstrId>\n            <EndToEndId>INV2025001</EndToEndId>\n        </PmtId>\n        <IntrBkSttlmAmt Ccy=\"USD\">15000.00</IntrBkSttlmAmt>\n        <ChrgBr>SLEV</ChrgBr>\n        <Dbtr>\n            <Nm>John Doe</Nm>\n            <PstlAdr>\n                <Ctry>US</Ctry>\n                <AdrLine>123 Main St, New York, NY</AdrLine>\n            </PstlAdr>\n        </Dbtr>\n        <DbtrAcct>\n            <Id>\n                <IBAN>US12345678901234567890</IBAN>\n            </Id>\n        </DbtrAcct>\n        <Cdtr>\n            <Nm>ABC Corp</Nm>\n            <PstlAdr>\n                <Ctry>GB</Ctry>\n                <AdrLine>456 London Bridge, UK</AdrLine>\n            </PstlAdr>\n        </Cdtr>\n        <CdtrAcct>\n            <Id>\n                <IBAN>GB09876543210987654321</IBAN>\n            </Id>\n        </CdtrAcct>\n    </CdtTrfTxInf>\n</FIToFICustomerCreditTransferV08>"
+            },
+            "expected_output": {
+                "status": "success",
+                "message": "Transaction processed successfully through CHIPS"
+            }
+        },
+        {
+            "id": 2,
+            "scenario": "Invalid SWIFT ISO 20022 Transaction - Missing Amount",
+            "input_data": {
+                "xml_message": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<FIToFICustomerCreditTransferV08 xmlns=\"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08\">\n    <GrpHdr>\n        <MsgId>ABC1234567890</MsgId>\n        <CreDtTm>2025-03-23T14:25:43</CreDtTm>\n        <NbOfTxs>1</NbOfTxs>\n        <SttlmInf>\n            <SttlmMtd>CLRG</SttlmMtd>\n            <ClrSys>\n                <Cd>CHIPS</Cd>\n            </ClrSys>\n        </SttlmInf>\n    </GrpHdr>\n    <CdtTrfTxInf>\n        <PmtId>\n            <InstrId>PAY001</InstrId>\n            <EndToEndId>INV2025001</EndToEndId>\n        </PmtId>\n        <ChrgBr>SLEV</ChrgBr> <Dbtr>...</Dbtr><DbtrAcct>...</DbtrAcct><Cdtr>...</Cdtr><CdtrAcct>...</CdtrAcct>\n    </CdtTrfTxInf>\n</FIToFICustomerCreditTransferV08>"
+            },
+            "expected_output": {
+                "status": "error",
+                "error": "Missing or invalid IntrBkSttlmAmt element"
+            }
+        },
+        {
+            "id": 3,
+            "scenario": "FEDWIRE Payment - Successful",
+            "input_data": {
+                "amount": 1000.0,
+                "currency": "USD",
+                "sender_aba": "121000359",
+                "receiver_aba": "021000021",
+                "sender_account": "1234567890",
+                "receiver_account": "9876543210"
+            },
+            "expected_output": {
+                "status": "success",
+                "message": "FEDWIRE payment successful"
+            }
+        },
+        {
+            "id": 4,
+            "scenario": "FEDWIRE Payment - Rejected - Invalid ABA Routing Number",
+            "input_data": {
+                "amount": 1000.0,
+                "currency": "USD",
+                "sender_aba": "INVALIDABA",
+                "receiver_aba": "021000021",
+                "sender_account": "1234567890",
+                "receiver_account": "9876543210"
+            },
+            "expected_output": {
+                "status": "error",
+                "error": "Invalid ABA routing number"
+            }
+        },
+        {
+            "id": 5,
+            "scenario": "CHIPS Transaction - Fraudulent Activity Detected",
+            "input_data": {
+                "xml_message": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<FIToFICustomerCreditTransferV08 xmlns=\"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08\">\n    <GrpHdr>...</GrpHdr>\n    <CdtTrfTxInf>\n        <PmtId>...</PmtId>\n        <IntrBkSttlmAmt Ccy=\"USD\">1000000000.00</IntrBkSttlmAmt> <ChrgBr>SLEV</ChrgBr> <Dbtr>...</Dbtr><DbtrAcct>...</DbtrAcct><Cdtr>...</Cdtr><CdtrAcct>...</CdtrAcct>\n    </CdtTrfTxInf>\n</FIToFICustomerCreditTransferV08>",
+                "suspicious_activity": true
+            },
+            "expected_output": {
+                "status": "error",
+                "error": "Fraudulent activity detected. Transaction rejected."
+            }
+        },
+        {
+            "id": 6,
+            "scenario": "CHIPS Transaction - Payment Validation Successful",
+            "input_data": {
+                "xml_message": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<FIToFICustomerCreditTransferV08 xmlns=\"urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08\">\n    <GrpHdr>...</GrpHdr>\n    <CdtTrfTxInf>\n        <PmtId>...</PmtId>\n        <IntrBkSttlmAmt Ccy=\"USD\">15000.00</IntrBkSttlmAmt> <ChrgBr>SLEV</ChrgBr> <Dbtr>...</Dbtr><DbtrAcct>...</DbtrAcct><Cdtr>...</Cdtr><CdtrAcct>...</CdtrAcct>\n    </CdtTrfTxInf>\n</FIToFICustomerCreditTransferV08>",
+                "validation_checks": [
+                    "IBAN verification",
+                    "Amount validation",
+                    "Sender/Receiver information"
+                ]
+            },
+            "expected_output": {
+                "status": "success",
+                "message": "CHIPS payment validated successfully"
+            }
+        }
+    ]
+}

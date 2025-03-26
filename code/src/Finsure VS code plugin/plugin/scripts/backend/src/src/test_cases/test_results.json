@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1,
+        "scenario": "Valid SWIFT ISO 20022 pacs.008 Credit Transfer",
+        "status": "fail",
+        "expected_output": {
+            "status": "ACSP",
+            "reason_code": null
+        },
+        "actual_response": {
+            "status": "success",
+            "approval_url": "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-0B9711845L097742A"
+        }
+    },
+    {
+        "id": 2,
+        "scenario": "Invalid SWIFT ISO 20022 pacs.008 - Missing Creditor Account",
+        "status": "fail",
+        "expected_output": {
+            "status": "RJCT",
+            "reason_code": "CRED_ACC_MISSING"
+        },
+        "actual_response": {
+            "status": "success",
+            "approval_url": "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7HN629081P353172W"
+        }
+    },
+    {
+        "id": 3,
+        "scenario": "FED Compliance - Successful Payment",
+        "status": "fail",
+        "expected_output": {
+            "status": "COMPLETED",
+            "fed_confirmation_number": "123456789012"
+        },
+        "actual_response": {
+            "status": "success",
+            "approval_url": "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-5D526610EY2349406"
+        }
+    },
+    {
+        "id": 4,
+        "scenario": "FED Compliance - Rejected Payment - Insufficient Funds",
+        "status": "fail",
+        "expected_output": {
+            "status": "REJECTED",
+            "reason_code": "INSUFFICIENT_FUNDS"
+        },
+        "actual_response": {
+            "status": "success",
+            "approval_url": "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-6XJ099392A902851N"
+        }
+    },
+    {
+        "id": 5,
+        "scenario": "CHIPS Transaction - Fraud Detection - High Value Transaction",
+        "status": "fail",
+        "expected_output": {
+            "status": "FLAGGED_FOR_REVIEW",
+            "reason_code": "HIGH_VALUE_TRANSACTION"
+        },
+        "actual_response": {
+            "status": "success",
+            "approval_url": "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-5AT20365PF1223843"
+        }
+    },
+    {
+        "id": 6,
+        "scenario": "CHIPS Transaction - Valid Payment",
+        "status": "fail",
+        "expected_output": {
+            "status": "COMPLETED",
+            "chips_confirmation_number": "CHIPS987654321"
+        },
+        "actual_response": {
+            "status": "success",
+            "approval_url": "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-1EW94654VR503424E"
+        }
+    }
+]

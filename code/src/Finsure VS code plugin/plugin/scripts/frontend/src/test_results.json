@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1,
+        "scenario": "Valid SWIFT ISO 20022 Transaction",
+        "status": "pass",
+        "expected_output": {
+            "status": "success",
+            "message": "SWIFT transaction processed successfully"
+        },
+        "actual_response": {
+            "status": "success",
+            "approval_url": "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-4YE296335K921963X"
+        }
+    },
+    {
+        "id": 2,
+        "scenario": "Invalid SWIFT ISO 20022 Transaction - Missing Creditor Account",
+        "status": "fail",
+        "expected_output": {
+            "status": "error",
+            "message": "Missing Creditor Account Number"
+        },
+        "actual_response": {
+            "status": "success",
+            "approval_url": "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-6KJ46104FN673384D"
+        }
+    },
+    {
+        "id": 3,
+        "scenario": "FEDWIRE Payment - Successful",
+        "status": "pass",
+        "expected_output": {
+            "status": "success",
+            "message": "FEDWIRE transaction processed successfully"
+        },
+        "actual_response": {
+            "status": "success",
+            "approval_url": "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-43A72254JL413493B"
+        }
+    },
+    {
+        "id": 4,
+        "scenario": "FEDWIRE Payment - Rejected - Insufficient Funds",
+        "status": "pass",
+        "expected_output": {
+            "status": "error",
+            "message": "FEDWIRE transaction rejected: Insufficient funds or Fed Compliance failure"
+        },
+        "actual_response": {
+            "status": "error",
+            "message": "Fraud detection triggered. Payment blocked."
+        }
+    },
+    {
+        "id": 5,
+        "scenario": "CHIPS Transaction - Successful Payment",
+        "status": "pass",
+        "expected_output": {
+            "status": "success",
+            "message": "CHIPS transaction processed successfully"
+        },
+        "actual_response": {
+            "status": "success",
+            "approval_url": "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-31Y2691537677651T"
+        }
+    },
+    {
+        "id": 6,
+        "scenario": "CHIPS Transaction - Fraudulent - Amount Exceeds Threshold",
+        "status": "pass",
+        "expected_output": {
+            "status": "error",
+            "message": "CHIPS transaction flagged for fraud: Amount exceeds threshold"
+        },
+        "actual_response": {
+            "status": "error",
+            "message": "Fraud detection triggered. Payment blocked."
+        }
+    }
+]

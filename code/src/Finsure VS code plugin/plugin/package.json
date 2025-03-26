@@ -1,0 +1,140 @@
+{
+  "name": "finsure",
+  "displayName": "Finsure",
+  "description": "Shows options for testing different scenarios",
+  "publisher": "kaarthik",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.98.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "menus": {
+      "explorer/context": [
+        {
+          "submenu": "finsure.fileSubmenu",
+          "title": "Finsure",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "submenu": "finsure.selectionSubmenu",
+          "title": "Finsure",
+          "group": "navigation"
+        }
+      ],
+      "finsure.fileSubmenu": [
+        {
+          "command": "finsure.fileOption1",
+          "title": "PaymentAPI - Defender"
+        },
+        {
+          "command": "finsure.fileOption2",
+          "title": "CreditEngine - Defender"
+        },
+        {
+          "command": "finsure.fileOption3",
+          "title": "Codebase - Defender"
+        },
+        {
+          "command": "finsure.fileOption4",
+          "title": "Prompt - Defender"
+        },
+        {
+          "command": "finsure.fileOption5",
+          "title": "UI - Defender"
+        }
+      ],
+      "finsure.selectionSubmenu": [
+        {
+          "command": "finsure.selectionOption1",
+          "title": "PaymentAPI - Defender"
+        },
+        {
+          "command": "finsure.selectionOption2",
+          "title": "CreditEngine - Defender"
+        },
+        {
+          "command": "finsure.selectionOption4",
+          "title": "Prompt - Defender"
+        },
+        {
+          "command": "finsure.selectionOption5",
+          "title": "UI - Defender"
+        }
+      ]
+    },
+    "submenus": [
+      {
+        "id": "finsure.fileSubmenu",
+        "label": "Finsure",
+        "icon": "$(file)"
+      },
+      {
+        "id": "finsure.selectionSubmenu",
+        "label": "Finsure",
+        "icon": "$(selection)"
+      }
+    ],
+    "commands": [
+      {
+        "command": "finsure.fileOption1",
+        "title": "PaymentAPI - Defender"
+      },
+      {
+        "command": "finsure.fileOption2",
+        "title": "CreditEngine - Defender"
+      },
+      {
+        "command": "finsure.fileOption3",
+        "title": "Codebase - Defender"
+      },
+      {
+        "command": "finsure.fileOption4",
+        "title": "Prompt - Defender"
+      },
+      {
+        "command": "finsure.fileOption5",
+        "title": "UI - Defender"
+      },
+      {
+        "command": "finsure.selectionOption1",
+        "title": "PaymentAPI - Defender"
+      },
+      {
+        "command": "finsure.selectionOption2",
+        "title": "CreditEngine - Defender"
+      },
+      {
+        "command": "finsure.selectionOption4",
+        "title": "Prompt - Defender"
+      },
+      {
+        "command": "finsure.selectionOption5",
+        "title": "UI - Defender"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.98.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
+    "eslint": "^9.21.0",
+    "typescript": "^5.7.3",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
