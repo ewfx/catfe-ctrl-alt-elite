@@ -30,13 +30,21 @@ Finsure is a regulation and context-aware testing solution made with agentic AI.
 
 The inspiration behind FINSURE stems from the increasing complexity of regulatory compliance and the challenges faced by financial institutions in ensuring their systems are robust, secure, and compliant. The project addresses the critical need for a solution that can automatically test financial systems for compliance with ever-evolving regulations, ensuring data security, fairness, and reliability. By leveraging agentic AI, FINSURE aims to simplify compliance processes while enhancing the robustness of financial systems.
 
+## 💻 Architecture Diagrams
+**RAG powered Context-Aware Test function and API requestor Generator and Executor Pipelines**
 ![Regulation_Context_RAG_pipelines](https://github.com/user-attachments/assets/bfafd91c-4c6b-4407-9757-c21367168a6b)
+
+**NLP instructed UI automation testing**
+![WhatsApp Image 2025-03-26 at 14 20 15](https://github.com/user-attachments/assets/b5523cf5-5cb0-44eb-9687-49b8313929bf)
+
 
 
 ## ⚙️ What It Does
 
 FINSURE offers a comprehensive suite of features designed to streamline testing and compliance:
 <img alt="Screenshot 2025-03-27 at 4 44 49 AM" src="https://github.com/user-attachments/assets/0f417c2b-9f90-4204-a5a0-024f46fb7b51" />
+
+**These solution are Tachyon compliant and portably packaged ,facilitating easy integration with VS code plugin (Orchestra) and Artifactory(PIP - Python package manager)**
 
 - **Regulations Knowledge Database and RAG Pipeline**: A repository for regulatory updates integrated with retrieval-augmented generation (RAG) for real-time compliance insights.
 - **Context-Aware Test Generator and Executor Pipeline**: Automatically generates and executes tests tailored to specific regulatory contexts.
@@ -82,7 +90,7 @@ The team encountered several technical and non-technical challenges during devel
 ## 🏃 How to Run
 1. Clone the repository  
    ```sh
-   git clone https://github.com/your-repo.git
+   git clone https://github.com/your-repo.git](https://github.com/ewfx/catfe-ctrl-alt-elite.git
    ```
 2. CLI installation- navigate to code/src/Finsure\ CLI
    ```sh
