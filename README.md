@@ -36,6 +36,8 @@ FINSURE offers a comprehensive suite of features designed to streamline testing 
 - **Context-Aware Test Generator and Executor Pipeline**: Automatically generates and executes tests tailored to specific regulatory contexts.
 - **Context-Aware Test Request API**: API-agnostic pipeline for generating and executing test requests.
 - **AI Agents for UI Automation**: Automates UI testing using natural language instructions.
+- **Testing Payment API Compliance**: Generates test cases for payment systems, validating compliance with Fed, SWIFT, and ISO regulations by interacting with actual payment API endpoints.
+- **Fraud Detection and Analysis**: Detects fraud patterns and analyzes them, providing resolutions for issues.
 - **GenAI Testing Scenarios**: Simulates scenarios to test payment systems' robustness, providing stakeholder-friendly explanations for failures.
 - **Loan Risk Model Testing**: Uses generative AI to simulate diverse personas for testing credit risk models for fairness and reliability.
 - **Plug-and-Play Workflows**: Seamless integration with enterprise pipelines via GitHub Actions.
@@ -83,9 +85,11 @@ The team encountered several technical and non-technical challenges during devel
 - 🔹 Backend: FastAPI
 - 🔹 Database: Elasticsearch
 - 🔹 Other: Gemini API, Python
-
+- 🔹 Containerization: Docker
+  
 ## 👥 Team
-- **Jyothikamalesh S** 
+- **Jyothikamalesh S**
+- **Atiraj Kumar** 
 - **Kaarthik Shankar** 
 - **Kumar Saurav** 
 - **Ayush Singh**
