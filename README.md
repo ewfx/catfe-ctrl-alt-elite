@@ -18,7 +18,7 @@ Finsure is a regulation and context-aware testing solution made with agentic AI.
 
 ## 🎥 Demo
 🔗 [Live Demo](#) (if applicable)  
-📹 [Video Demo](#) (if applicable)  
+📹 [Video Demo](#) : https://drive.google.com/file/d/1WxZ1D_3FeFZDLO_KFQO_di_XpHt9Fucs/view?usp=sharing  
 🔗 [Presentation Link]: https://www.canva.com/design/DAGi0WiuLh8/yK8lYwWbEJc6zSjTmB9Hpg/edit
 🖼️ Screenshots:
 
