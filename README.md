@@ -36,7 +36,7 @@ The inspiration behind FINSURE stems from the increasing complexity of regulator
 ## ⚙️ What It Does
 
 FINSURE offers a comprehensive suite of features designed to streamline testing and compliance:
-<img width="509" alt="Screenshot 2025-03-27 at 4 44 49 AM" src="https://github.com/user-attachments/assets/0f417c2b-9f90-4204-a5a0-024f46fb7b51" />
+<img alt="Screenshot 2025-03-27 at 4 44 49 AM" src="https://github.com/user-attachments/assets/0f417c2b-9f90-4204-a5a0-024f46fb7b51" />
 
 - **Regulations Knowledge Database and RAG Pipeline**: A repository for regulatory updates integrated with retrieval-augmented generation (RAG) for real-time compliance insights.
 - **Context-Aware Test Generator and Executor Pipeline**: Automatically generates and executes tests tailored to specific regulatory contexts.
