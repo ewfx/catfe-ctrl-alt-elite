@@ -105,6 +105,7 @@ The team encountered several technical and non-technical challenges during devel
 - 🔹 VS code plugin: Typescript,Javascript
 - 🔹 Command Line interface: Python, Typer
 - 🔹 RAG Database: Elasticsearch
+- 🔹 Agentic AI: Browser Use
 - 🔹 Frontend: HTML/Streamlit
 - 🔹 Backend: FastAPI,PayPal API
 - 🔹 Containerization: Docker
