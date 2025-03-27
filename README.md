@@ -64,9 +64,9 @@ The development of FINSURE involved a diverse tech stack tailored to its various
 
 - **Regulations Knowledge Database and RAG Pipeline**: Built using Elasticsearch for efficient data retrieval.
 - **Context-Aware Test function Generator and Executor Pipeline**:
-    - *Codebase Defender*: Focused on SOX, KYC, AML tests using Java and Gradle.
+    - **Codebase Defender**: Focused on SOX, KYC, AML tests using Java and Gradle.
 - **Context-Aware Test API request Generator and Executor Pipelines**:
-    - *PaymentAPI Defender*: Ensures compliance with Swift messaging standards using Trasanction gateway endpoints and Python,Now implemented with PayPal transaction API.
+    - **PaymentAPI Defender**: Ensures compliance with Swift messaging standards using Trasanction gateway endpoints and Python,Now implemented with PayPal transaction API.
     - *CreditEngine Defender*: Tests ML models for credit risk using Python.
 - **UI Defender**: Employs Browseruse and Playwright for natural language-based UI testing.
 - **Prompt Defender**: A UI test agent for testing chatbots with Prompt injection leveraging finance-aware prompts with Browseruse and Playwright.
