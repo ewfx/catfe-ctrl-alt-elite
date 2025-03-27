@@ -68,7 +68,7 @@ The development of FINSURE involved a diverse tech stack tailored to its various
 - **Context-Aware Test API request Generator and Executor Pipelines**:
     - *PaymentAPI Defender*: Ensures compliance with Swift messaging standards using Trasanction gateway endpoints and Python,Now implemented with PayPal transaction API.
     - *CreditEngine Defender*: Tests ML models for credit risk using Python.
-- **UI Automation Tester**: Employs Browseruse and Playwright for natural language-based UI testing.
+- **UI Defender**: Employs Browseruse and Playwright for natural language-based UI testing.
 - **Prompt Defender**: A UI test agent for testing chatbots with Prompt injection leveraging finance-aware prompts with Browseruse and Playwright.
 
 # Command line interface(IDE and OS Agnostic)
