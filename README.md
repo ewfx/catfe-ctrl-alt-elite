@@ -53,7 +53,7 @@ FINSURE offers a comprehensive suite of features designed to streamline testing 
 - **Plug-and-Play Workflows**: Seamless integration with enterprise pipelines via GitHub Actions.
 - **Multi-Format Solutions**: Available as a VSCode plugin, Python package, CLI tool, GitHub Workflow Generator, and Regulatory Compliance VectorDB.
 
-  <img width="513" alt="Solution" src="https://github.com/user-attachments/assets/07eade14-ddd3-4002-9ad0-d69b60e88eee" />
+  <img  alt="Solution" src="https://github.com/user-attachments/assets/07eade14-ddd3-4002-9ad0-d69b60e88eee" />
 
 **These solution are Tachyon compliant and portably packaged ,facilitating easy integration with VS code plugin (Orchestra) and Artifactory(PIP - Python package manager)**
 
